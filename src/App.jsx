@@ -3,13 +3,16 @@ import reactLogo from "./assets/react.svg";
 import "./index.css";
 import {IngresosEgresosCounter} from './components/IngresosEgresosCounter'
 import {SaldoActual} from './components/SaldoActual'
+import {Movimientos} from './components/Movimientos'
+import {Profile} from './components/Profile'
 function App() {
 
   return (
     <>
-      <h1>Gestor de gastos</h1>
-      <IngresosEgresosCounter></IngresosEgresosCounter>
+      <Profile></Profile>
       <SaldoActual></SaldoActual>
+      <IngresosEgresosCounter></IngresosEgresosCounter>
+      <Movimientos></Movimientos>
     </>
   );
 }

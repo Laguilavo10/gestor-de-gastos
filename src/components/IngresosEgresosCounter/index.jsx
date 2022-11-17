@@ -3,7 +3,7 @@ import React from "react";
 export function IngresosEgresosCounter() {
   return (
     <>
-      <section className="panel">
+      <section className="panel panel-stats">
         <div className="stats">
           <div className="ingresos-mes">
             <span>600.000</span>

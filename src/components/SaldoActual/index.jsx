@@ -2,7 +2,7 @@ import React from 'react'
 
 export function SaldoActual() {
   return (
-    <section className='panel'>
+    <section className='panel panel-saldo'>
       <h4 className='saldo-title'>Saldo Actual</h4>
       <p className='saldo-actual'>$2473</p>
       <div className='botones'>

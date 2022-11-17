@@ -15,6 +15,7 @@ body{
 #root{
   display: flex;
   flex-direction: column;
+  /* margin: 0 20px; */
 }
 
 .panel{
@@ -24,7 +25,8 @@ body{
   justify-content: space-around;
   /* padding: 40px 0 5px 0; */
   min-width: 200px;
-  width: 270px;
+  /* width: 270px; */
+  width: 80%;
   min-height: 230px;
   margin:30px auto;
   background-color: silver;
@@ -90,4 +92,72 @@ background: linear-gradient(0deg, rgba(87,25,25,1) 40%, rgba(207,15,15,1) 93%);
   border-radius: 10px;
   border: none;
   /* padding: 10px; */
+}
+
+.panel-movimientos{
+  height: 90%;
+  width: 90%;
+}
+@media ( width >1000px) {
+  #root{
+    display: grid;
+    grid-template-areas: 
+      "profile saldo movimientos"
+      "profile stats movimientos";
+    height: 100vh;
+    grid-template-columns: 20% 40% 40%;
+  }
+  .panel-stats{
+    grid-area: stats;
+  }
+  .panel-movimientos{
+    margin: 30px 20px;
+    grid-area: movimientos;
+  }
+  .panel-profile{
+    grid-area: profile;
+    gap: 50px;
+    margin: 0;
+    justify-content:stretch;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding-top: 30px;
+  }
+  .titulo{
+    display: flex;
+    gap: 10px;
+  }
+  .titulo > img{
+    width: 60px;
+    height: 60px;
+  }
+
+  .info-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .info-profile > img{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+  }
+
+  .info-profile > p{
+    font-size: 2rem;
+    text-align: center;
+  }
+  .options{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+  }
+  .options > button{
+    border-radius: 0px;
+    border: none;
+    padding: 10px;
+  }
 }
