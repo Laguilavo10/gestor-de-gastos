@@ -12,3 +12,82 @@
 body{
   background-color: var(--background);
 }
+#root{
+  display: flex;
+  flex-direction: column;
+}
+
+.panel{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* padding: 40px 0 5px 0; */
+  min-width: 200px;
+  width: 270px;
+  min-height: 230px;
+  margin:30px auto;
+  background-color: silver;
+  border-radius: 20px;
+}
+
+.stats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.ingresos-mes p, .gastos-mes p{
+  margin: 15px;
+}
+
+.ingresos-mes >span, .gastos-mes >span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+
+}
+
+.ingresos-mes >span{
+  background: grey;
+  border: 3px solid green;
+}
+.gastos-mes >span{
+  background: rgb(87,25,25);
+background: linear-gradient(0deg, rgba(87,25,25,1) 40%, rgba(207,15,15,1) 93%);
+}
+
+#msj-mes{
+  text-align: end;
+  padding:5px 15px;
+}
+
+.saldo-actual{
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(0, 0, 255);
+}
+
+.saldo-actual::first-letter{
+  font-size: 2rem;
+}
+
+.botones{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.btn-ingresar, .btn-gastar{
+  width: 100px;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  /* padding: 10px; */
+}
