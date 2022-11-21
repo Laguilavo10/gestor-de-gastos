@@ -7,14 +7,14 @@ export function IngresosEgresosCounter() {
         <div className="stats">
           <div className="ingresos-mes">
             <span>600.000</span>
-            <p>Ingresos</p>
+            <p><img src="https://img.icons8.com/ios-filled/50/0C8418/send-letter--v1.png" alt="" /> Ingresos</p>
           </div>
           <div className="gastos-mes">
             <span>600.000</span>
-            <p>Gastos</p>
+            <p><img src="https://img.icons8.com/ios-filled/50/960F0F/low-importance.png" alt="" /> Gastos</p>
           </div>
         </div>
-        <span id="msj-mes">*en el mes de novimebre</span>
+        {/* <span id="msj-mes">*en el mes de novimebre</span> */}
       </section>
     </>
   );
