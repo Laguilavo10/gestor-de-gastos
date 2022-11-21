@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./index.css";
 import {IngresosEgresosCounter} from './components/IngresosEgresosCounter'
-import {SaldoActual} from './components/SaldoActual'
+import {Estadisticas} from './components/Estadisticas'
 import {Movimientos} from './components/Movimientos'
 import {Profile} from './components/Profile'
 import {NavMobile} from './components/NavMobile'
@@ -19,7 +19,7 @@ function App() {
       
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
       {optionRender == 'profile' && <Profile></Profile>}
-      {optionRender == 'stats' && <SaldoActual></SaldoActual>}
+      {optionRender == 'stats' && <Estadisticas></Estadisticas>}
       {optionRender == 'movimientos' && <Movimientos></Movimientos>}
 
     </>

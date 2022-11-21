@@ -1,5 +1,4 @@
 import React from "react";
-import { SaldoActual } from "../SaldoActual";
 
 export function NavMobile(props) {
   return (
@@ -21,7 +20,7 @@ export function NavMobile(props) {
             src="https://img.icons8.com/glyph-neue/64/null/wallet.png"
             alt=""
           />
-          Saldo & Stats
+          Estadisticas
         </button>
         <button onClick={(a)=>(props.setoptionRender('profile'))}>
           <img
