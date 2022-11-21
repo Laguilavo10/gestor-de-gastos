@@ -3,7 +3,7 @@ import React from "react";
 export function NavMobile(props) {
   return (
     <>
-      <div className="logo">
+      <header className="logo">
         <img
           src="https://img.icons8.com/fluency/48/null/financial-growth-analysis.png"
           alt="favicon"
@@ -13,11 +13,11 @@ export function NavMobile(props) {
           <br />
           De gastos
         </h1>
-      </div>
+      </header>
       <nav className="nav-mobile">
         <button onClick={(a)=>(props.setoptionRender('stats'))}>
           <img
-            src="https://img.icons8.com/glyph-neue/64/null/wallet.png"
+            src="https://img.icons8.com/sf-ultralight-filled/25/null/statistics.png"
             alt=""
           />
           Estadisticas
