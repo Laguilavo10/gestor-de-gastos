@@ -401,9 +401,11 @@ textarea{
 
 
               /* MEDIAQUERIES */
+  @media (width < 360px) {           
   .fecha-item::first-line{
     font-size: 0.7rem;
 
   }
   
-}
+}  
+

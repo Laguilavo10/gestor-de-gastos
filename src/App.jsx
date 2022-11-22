@@ -22,14 +22,14 @@ function App() {
         setIsOpenModal={setIsOpenModal}
       />
       <CrearPerfil/>
-      {optionRender == 'profile' && <Profile isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
+      {/* {optionRender == 'profile' && <Profile isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
       {optionRender == 'stats' && <Estadisticas></Estadisticas>}
       {optionRender == 'movimientos' && <Movimientos>
           {user[0].finanzas[0].gastos.map((a, index)=>(<ItemMovimiento
             infoMovimiento={a}
             key={index}
             />))}
-        </Movimientos>}
+        </Movimientos>} */}
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
     </>
   );
