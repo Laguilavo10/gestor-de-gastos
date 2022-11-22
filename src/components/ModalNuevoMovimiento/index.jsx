@@ -1,6 +1,6 @@
 import React, { createFactory } from "react";
 
-export function ModalMovimiento(props) {
+export function ModalNuevoMovimiento(props) {
 
   const registrarMovimiento = (event) => {
     event.preventDefault();
@@ -45,8 +45,6 @@ export function ModalMovimiento(props) {
   }
 
   let { dia, mes, año } = fechaHoy();
-
-  console.log(props)
 
   return (
     <article className={`container-modal ${!props.isOpenModal && 'invisible'}`}>

@@ -1,0 +1,55 @@
+.container-registro{
+  margin: auto 30px;
+  padding: 20px;
+  display: flex;
+  gap:20px;
+  /* height: 70%; */
+}
+
+.container-registro > img{
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.container-registro > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.container-registro > div > h2{
+  text-align: center
+}
+
+.form-registro{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0 ;
+}
+
+.form-registro > label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-registro > label > input{
+  width: 80%;
+  height: 30px;
+  padding: 10px;
+  /* font-size: 2rem; */
+}
+
+.btn-crear-registro{
+  width: 50%;
+  margin: auto;
+}
+
+@media (width < 600px) {
+  .container-registro > img{
+    display: none;
+  }
+}
