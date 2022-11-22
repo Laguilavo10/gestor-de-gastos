@@ -23,6 +23,9 @@ button:hover {
   flex-direction: column;
 }
 
+.invisible{
+  display: none !important;
+}
 .logo{
   display: flex;
   justify-content: center;
@@ -136,6 +139,86 @@ button:hover {
   text-align: center;
 }
 
+.container-modal{
+  color: aliceblue;
+  background-color: #33AE15;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(32,35,41,.8);
+  width: 100vw;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-movimiento{
+  background-color: rebeccapurple;
+  width: 80%;
+
+  border-radius: 30px;
+  padding: 15px;
+  max-width: 400px;
+
+}
+
+.modal-movimiento > h3{
+  margin: 10px;
+  text-align: center;
+
+}
+
+.form-nuevo-movimiento{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-nuevo-movimiento > label, .metodos-pago{
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  width: 100%;
+  background-color: var(--nav-bar);
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+textarea{
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  resize: none;
+}
+
+.btns-form{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.metodos-pago > div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.metodos-pago > div > label{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+              /* SECCION MOVIMIENTOS */
 
 .stats-mes{
   display: flex;
@@ -325,6 +408,7 @@ button:hover {
 
               /* MEDIAQUERIES */
 
+
 @media (width < 360px) {
   .container-stats{
     flex-direction: column;
@@ -409,154 +493,3 @@ button:hover {
     rgba(207, 15, 15, 1) 93%
   );
 }
-
-#msj-mes {
-  text-align: end;
-  padding: 5px 15px;
-}
-
-
-
-.botones {
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-.btn-ingresar,
-.btn-gastar {
-  width: 100px;
-  height: 100%;
-  border-radius: 10px;
-  border: none;
-  /* padding: 10px; */
-
-
-
-
-
-/* .panel-profile{ */
-/* position: absolute; */
-/* top: 0;
-  height: calc(100vh - 30px);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  width: 300px; */
-/* display: none; */
-/* } */
-
-/* @media ( width > 1000px) {
-  #root{
-    display: grid;
-    grid-template-areas: 
-      "profile saldo movimientos"
-      "profile stats movimientos";
-    height: 100vh;
-    grid-template-columns: 20% 40% 40%;
-  }
-  .panel-stats{
-    grid-area: stats;
-  }
-  .panel-movimientos{
-    margin: 30px 20px;
-    grid-area: movimientos;
-  }
-  .panel-profile{
-    position:relative;
-    display: flex;
-    grid-area: profile;
-    gap: 50px;
-    margin: 0;
-    justify-content:stretch;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    width: 100%;
-    padding-top: 30px;
-
-  }
-  .titulo{
-    display: flex;
-    gap: 10px;
-  }
-  .titulo > img{
-    width: 60px;
-    height: 60px;
-  }
-
-  .info-profile{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .info-profile > img{
-    width: 200px;
-    height: 200px;
-    border-radius: 200px;
-  }
-
-  .info-profile > p{
-    font-size: 2rem;
-    text-align: center;
-  }
-  .options{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-  }
-  .options > button{
-    border-radius: 0px;
-    border: none;
-    padding: 10px;
-  }
-  .nav-bar{
-    display: none;
-  }
-  
-}
-
-@media ( width < 1000px) {
-  #root{
-    display: grid;
-    grid-template-areas: 
-      "saldo stats"
-      "movimientos movimientos";
-    /* margin: 0px 0; */
-/* margin: 20px; */
-/* } */
-
-/* .panel-movimientos{
-    grid-area: movimientos;
-    min-height: 500px;
-  }
-
-  .panel-saldo{
-    grid-area: saldo;
-  }
-  .panel-stats{
-    grid-area: stats;
-  }
-  .nav-bar{
-    display: flex;
-    background-color: silver;
-    width: 100vw;
-    height: 37px;
-  }
-
-  .burguer-menu{
-    width: 35px;
-    height: 35px;
-    margin: 0 0 0 10px;
-  }
-}
-
-@media ( width < 570px) {
-
-  #root{
-    display: flex;
-  }
-
-} */

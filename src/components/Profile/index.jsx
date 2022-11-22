@@ -1,7 +1,7 @@
 import React from 'react'
 // import Menu from "../../assets/icons8-menú.gif";
 
-export  function Profile() {
+export  function Profile(props) {
   return (
     <>
     <aside className='panel-profile panel'>
@@ -14,7 +14,7 @@ export  function Profile() {
         <p>$2000</p>
       </div>
       <div>
-        <button>Nuevo Movimiento</button>
+        <button onClick={(a)=>(props.setIsOpenModal(true))}>Nuevo Movimiento</button>
       </div>
     </aside>
     
