@@ -4,9 +4,11 @@ export let user =[
   {
     nombre: "Andres Laguilavo",
     saldo: 2000,
+    ultimoSaldo:327.665,
     finanzas:[
       {
         mes:'Noviembre',
+        saldoFinal: 7,
         gastos:[
           {
             valor:137000,
@@ -23,10 +25,10 @@ export let user =[
             tipoMovimiento:'ingreso',
           },
           {
-            valor:200,
+            valor:327665,
             fecha:'21/11/22',
-            descripcion:'Dinero Actual',
-            metodo:'Efectivo',
+            descripcion:'Saldo Tarjeta Fallabella',
+            metodo:'Tarjeta Credito/Debito',
             tipoMovimiento:'ingreso',
           },
         ]

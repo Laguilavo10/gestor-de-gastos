@@ -13,6 +13,9 @@ export  function Profile() {
         <h4>Saldo Actual</h4>
         <p>$2000</p>
       </div>
+      <div>
+        <button>Nuevo Movimiento</button>
+      </div>
     </aside>
     
     </>

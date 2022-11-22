@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.css";
+import {Header} from './components/Header'
 import {Estadisticas} from './components/Estadisticas'
 import {Movimientos} from './components/Movimientos'
 import {Profile} from './components/Profile'
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <> 
+      <Header></Header>
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
       {optionRender == 'profile' && <Profile></Profile>}
       {optionRender == 'stats' && <Estadisticas></Estadisticas>}
