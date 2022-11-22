@@ -21,7 +21,8 @@ button:hover {
 #root {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 70px);
+  height: 100vh;
+  /* overflow-x: hidden; */
 }
 
 .invisible{
@@ -59,15 +60,15 @@ button:hover {
 .nav-mobile {
   width: 100%;
   background-color: var(--nav-bar);
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: flex;
   height: 70px;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 20px; 
+  border-top-right-radius: 20px; 
   z-index: 10;
   border-top: 2px solid black;
 }
@@ -400,21 +401,6 @@ textarea{
 
 
               /* MEDIAQUERIES */
-
-@media (width < 360px) {
-  .container-stats{
-    flex-direction: column;
-  }
-  .panel-stats{
-    padding-bottom: 40px;
-  }
-  .item{
-    flex-direction: column;
-  }
-  .fecha-item{
-    font-size: 0.7rem;
-    margin: none;
-  }
   .fecha-item::first-line{
     font-size: 0.7rem;
 
