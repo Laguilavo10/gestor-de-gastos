@@ -13,23 +13,49 @@ import { user } from "./infoFinanzas";
 function App() {
   const [optionRender, setoptionRender] = useState("profile");
   const [isOpenModal, setIsOpenModal] = useState(false);
+  let userLocalStorage = JSON.parse(localStorage.getItem("info"));
 
+  if (userLocalStorage == null) {
+    localStorage.setItem("info", JSON.stringify(null));
+  }
+  const [infoUser, setInfoUser] = useState(
+    JSON.parse(localStorage.getItem("info"))
+  );
+
+  function hl(optionRender) {
+    console.log(optionRender);
+    switch (optionRender) {
+      case "profile":
+        return (
+          <Profile
+            isOpenModal={isOpenModal}
+            setIsOpenModal={setIsOpenModal}
+            infoUser={infoUser}
+          />
+        );
+        break;
+      case "stats":
+        return <Estadisticas />;
+        break;
+      case "movimientos":
+        return (
+          <Movimientos>
+            {user[0].finanzas[0].gastos.map((a, index) => (
+              <ItemMovimiento infoMovimiento={a} key={index} />
+            ))}
+          </Movimientos>
+        );
+        break;
+    }
+  }
   return (
     <>
-      <Header/>
+      <Header />
       <ModalNuevoMovimiento
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
       />
-      <CrearPerfil/>
-      {/* {optionRender == 'profile' && <Profile isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
-      {optionRender == 'stats' && <Estadisticas></Estadisticas>}
-      {optionRender == 'movimientos' && <Movimientos>
-          {user[0].finanzas[0].gastos.map((a, index)=>(<ItemMovimiento
-            infoMovimiento={a}
-            key={index}
-            />))}
-        </Movimientos>} */}
+      {!infoUser ? <CrearPerfil setInfoUser={setInfoUser} /> : hl(optionRender)}
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
     </>
   );

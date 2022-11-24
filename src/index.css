@@ -21,7 +21,7 @@ button:hover {
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 75px);
   /* overflow-x: hidden; */
 }
 
@@ -60,7 +60,7 @@ button:hover {
 .nav-mobile {
   width: 100%;
   background-color: var(--nav-bar);
-  position: sticky;
+  position: fixed;
   bottom: 0;
   display: flex;
   height: 70px;
@@ -97,32 +97,45 @@ button:hover {
 }
 
 .panel-profile{
-  margin: 10px auto;
+  margin: auto;
+  padding: 20px;
+  max-width: 500px;
+  /* justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap; */
+  gap: 10px;
 }
 
 .info-profile{
   display: flex;
-  /* flex-direction: column; */
-
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  margin: auto;
 }
 
 .info-profile > img{
   border: 2px solid #465362;
-  border-radius: 200px;
+  border-radius: 150px;
   width: 150px;
+  height: 150px;
 }
 
 .info-profile > p{
   font-size: 3rem;
   text-align: center;
+  min-width: 150px;
 }
+
 
 .saldo-actual{
   margin: 30px;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .saldo-actual > h4{
@@ -401,11 +414,19 @@ textarea{
 
 
               /* MEDIAQUERIES */
-  @media (width < 360px) {           
+@media (width < 430px) {           
   .fecha-item::first-line{
     font-size: 0.7rem;
-
   }
-  
+  .panel-profile{
+    margin: auto 30px;
+  }
+}  
+
+@media (width < 710px) {           
+  .saldo-actual{
+    margin: 20px auto;
+    height: 120px;
+  }
 }  
 

@@ -3,7 +3,8 @@
   padding: 20px;
   display: flex;
   gap:20px;
-  /* height: 70%; */
+  max-width: 700px;
+  align-self: center;
 }
 
 .container-registro > img{
