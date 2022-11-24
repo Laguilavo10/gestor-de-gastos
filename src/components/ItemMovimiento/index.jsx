@@ -4,7 +4,6 @@ import arrowUp from '../../assets/arrow-up.png'
 
 export function ItemMovimiento({infoGasto}) {
   let fecha = infoGasto.fecha.split('-')
-  console.log(infoGasto)
   let transaccion = infoGasto.transaccion === 'ingreso' ? ['ingreso-item', 'reverse-item', arrowUp] : ['gasto-item', '', arrowDown]
 
   function numeroAMes(numero) {

@@ -9,6 +9,7 @@ import { ItemMovimiento } from "./components/ItemMovimiento";
 import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
 import { CrearPerfil } from "./components/CrearPerfil";
 import { user } from "./infoFinanzas";
+import { EstadisticasMes } from "./components/EstadisticasMes";
 
 function App() {
   const [optionRender, setoptionRender] = useState("profile");
@@ -18,8 +19,11 @@ function App() {
   if (userLocalStorage == null) {
     localStorage.setItem("info", JSON.stringify(null));
   }
-  const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("info")));
-  // console.log(infoUser.finanzas[2022][0.gastos])
+  const [infoUser, setInfoUser] = useState(
+    JSON.parse(localStorage.getItem("info"))
+  );
+  // console.log(infoUser);
+
   function renderSection(optionRender) {
     switch (optionRender) {
       case "profile":
@@ -30,10 +34,14 @@ function App() {
             infoUser={infoUser}
           />
         );
-        break;
       case "stats":
-        return <Estadisticas />;
-        break;
+        return (
+          <Estadisticas>
+            {infoUser.finanzas[2022].map((a) => (
+              <EstadisticasMes dataMes={a} key={a.mes}/>
+            ))}
+          </Estadisticas>
+        );
       case "movimientos":
         return (
           <Movimientos>
@@ -42,9 +50,9 @@ function App() {
             ))}
           </Movimientos>
         );
-        break;
     }
   }
+
   return (
     <>
       <Header />
@@ -53,9 +61,12 @@ function App() {
         setIsOpenModal={setIsOpenModal}
         infoUser={infoUser}
         setInfoUser={setInfoUser}
-
       />
-      {!infoUser ? <CrearPerfil setInfoUser={setInfoUser} /> : renderSection(optionRender)}
+      {!infoUser ? (
+        <CrearPerfil setInfoUser={setInfoUser} />
+      ) : (
+        renderSection(optionRender)
+      )}
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
     </>
   );

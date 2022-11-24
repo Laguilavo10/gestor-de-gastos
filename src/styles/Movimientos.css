@@ -43,7 +43,7 @@
 .panel-movimientos {
   align-self: center;
   height: calc(100vh - (48px + 50px + 70px + 30px));
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

@@ -1,0 +1,78 @@
+.stats-container{
+  display: flex;
+  /* padding: 20px; */
+  gap: 20px ;
+  height: 100%;
+  overflow-y: auto;
+  /* overflow-y: visible; */
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.stats-mes{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+
+.panel-stats{
+  justify-content: center;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: relative;
+  padding: 20px 10px 30px 10px ;
+  flex-wrap: wrap;
+  min-width: 200px;
+}
+
+.mes{
+  color: aliceblue;
+}
+.container-stats{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stats {
+  min-width: 7rem;
+  min-height: 7rem;
+  display: flex;
+  border-radius: 70px;
+  background-color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #011936;
+}
+
+.stats-ingresos{
+  border: 5px solid #33AE15;
+
+}
+
+.stats-gastos{
+  border: 5px solid #BE2727;
+}
+.title-stats{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title-stats > img{
+  width: 20px;
+}
+
+.saldo-fin-mes{
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: .9rem;
+  /* margin: 10px 0; */
+}

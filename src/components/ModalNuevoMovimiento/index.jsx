@@ -4,34 +4,36 @@ export function ModalNuevoMovimiento(props) {
   const registrarMovimiento = (event) => {
     event.preventDefault();
     let metodo = ''
-    for (let index = 4; index < 8; index++) {
+    for (let index = 4; index <= 8; index++) {
       let i = event.target[index]
       if (i.checked) {
         metodo = i.value
       }
     }
-
     let infoMovimiento = {
       fecha:event.target[0].value,
-      valor:event.target[1].value,
+      valor:Number(event.target[1].value),
       transaccion:event.target[2].value,
       descripcion:event.target[3].value,
       metodo
     }
-
     let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split('-')
     let mesHoy = numeroAMes(mesMovimiento)
+    console.log(mesHoy)
     let existeMes =  props.infoUser.finanzas[añoMovimiento].some((a)=>a.mes === mesHoy)
+    // let existeMes =  props.infoUser.finanzas[añoMovimiento].some((a)=>console.log(a))
 
-
-    if (existeMes) {
-      let i = props.infoUser.finanzas[añoMovimiento].findIndex((a)=>(a.mes === mesHoy))
-      props.infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento)
+    console.log(existeMes)
+    if (!existeMes) {
+      props.infoUser.finanzas[añoMovimiento].push({mes:mesHoy,saldoFinal:0,gastos:[]})
     }
+
+    let i = props.infoUser.finanzas[añoMovimiento].findIndex((a)=>(a.mes === mesHoy))
+    props.infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento)
 
     localStorage.setItem("info", JSON.stringify(props.infoUser))
     props.setInfoUser(props.infoUser)
-    limpiarInputs(event)
+    alert('Registro de Movimiento exitoso. Si deseea verlo dirigase a "Movimientos"')
   };
 
   const limpiarInputs = (event)=>{
@@ -47,18 +49,18 @@ export function ModalNuevoMovimiento(props) {
 
   function numeroAMes(numero) {
     let meses = [
-      "Ene",
-      "Feb",
-      "Mar",
-      "Abr",
-      "May",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dic",
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
     ];
     return meses[numero - 1];
   }
