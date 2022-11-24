@@ -1,7 +1,6 @@
 import React from 'react'
-
+import '../../styles/Movimientos.css'
 export function Movimientos(props) {
-  console.log(props.children)
   return (
     <>
       <div className='search-container'>
@@ -13,7 +12,7 @@ export function Movimientos(props) {
         <img src="https://img.icons8.com/ios-glyphs/30/null/sorting-options.png"/>
         </button>
       </div>
-      <section className="panel panel-movimientos">
+      <section className="panel-movimientos">
         {props.children}
       </section>
     

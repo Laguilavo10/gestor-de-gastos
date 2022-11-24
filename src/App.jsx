@@ -18,12 +18,9 @@ function App() {
   if (userLocalStorage == null) {
     localStorage.setItem("info", JSON.stringify(null));
   }
-  const [infoUser, setInfoUser] = useState(
-    JSON.parse(localStorage.getItem("info"))
-  );
-
-  function hl(optionRender) {
-    console.log(optionRender);
+  const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("info")));
+  // console.log(infoUser.finanzas[2022][0.gastos])
+  function renderSection(optionRender) {
     switch (optionRender) {
       case "profile":
         return (
@@ -40,8 +37,8 @@ function App() {
       case "movimientos":
         return (
           <Movimientos>
-            {user[0].finanzas[0].gastos.map((a, index) => (
-              <ItemMovimiento infoMovimiento={a} key={index} />
+            {infoUser.finanzas[2022][0].gastos.map((a, index) => (
+              <ItemMovimiento infoGasto={a} key={index} />
             ))}
           </Movimientos>
         );
@@ -54,8 +51,11 @@ function App() {
       <ModalNuevoMovimiento
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
+        infoUser={infoUser}
+        setInfoUser={setInfoUser}
+
       />
-      {!infoUser ? <CrearPerfil setInfoUser={setInfoUser} /> : hl(optionRender)}
+      {!infoUser ? <CrearPerfil setInfoUser={setInfoUser} /> : renderSection(optionRender)}
       <NavMobile setoptionRender={setoptionRender}></NavMobile>
     </>
   );

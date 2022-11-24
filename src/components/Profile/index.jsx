@@ -2,7 +2,7 @@ import React from 'react'
 // import Menu from "../../assets/icons8-menú.gif";
 
 export  function Profile(props) {
-  console.log(props)
+
   return (
     <>
     <aside className='panel-profile panel'>

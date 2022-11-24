@@ -1,7 +1,6 @@
 import React, { createFactory } from "react";
-
+import '../../styles/Movimientos.css'
 export function ModalNuevoMovimiento(props) {
-
   const registrarMovimiento = (event) => {
     event.preventDefault();
     let metodo = ''
@@ -20,7 +19,18 @@ export function ModalNuevoMovimiento(props) {
       metodo
     }
 
-    console.log(infoMovimiento)
+    let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split('-')
+    let mesHoy = numeroAMes(mesMovimiento)
+    let existeMes =  props.infoUser.finanzas[añoMovimiento].some((a)=>a.mes === mesHoy)
+
+
+    if (existeMes) {
+      let i = props.infoUser.finanzas[añoMovimiento].findIndex((a)=>(a.mes === mesHoy))
+      props.infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento)
+    }
+
+    localStorage.setItem("info", JSON.stringify(props.infoUser))
+    props.setInfoUser(props.infoUser)
     limpiarInputs(event)
   };
 
@@ -35,11 +45,28 @@ export function ModalNuevoMovimiento(props) {
     event.target[8].checked = false
   }
 
+  function numeroAMes(numero) {
+    let meses = [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic",
+    ];
+    return meses[numero - 1];
+  }
   function fechaHoy() {
     let fecha = new Date();
     return {
       dia: fecha.getDate(),
-      mes: fecha.getMonth(),
+      mes: (fecha.getMonth() + 1),
       año: fecha.getFullYear(),
     };
   }
@@ -53,7 +80,7 @@ export function ModalNuevoMovimiento(props) {
         <form onSubmit={registrarMovimiento} className="form-nuevo-movimiento">
           <label>
             Fecha
-            <input type="date" defaultValue={`${año}-${mes + 1}-${dia}`} />
+            <input type="date" defaultValue={`${año}-${mes}-${dia}`} />
           </label>
           <label>
             Valor
