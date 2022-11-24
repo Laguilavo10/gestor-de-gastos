@@ -43,8 +43,8 @@
 .panel-movimientos {
   align-self: center;
   height: calc(100vh - (48px + 50px + 70px + 30px));
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: scroll;
+  /* overflow-x: hidden; */
   padding-right: 5px;
 }
 
