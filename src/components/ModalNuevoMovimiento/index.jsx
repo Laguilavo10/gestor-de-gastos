@@ -1,5 +1,12 @@
 import React, { createFactory } from "react";
+import fechaHoy from "../../functions/fechaHoy";
+import numeroAMes from "../../functions/numeroAMes";
+import { limpiarInputs } from "../../functions/limpiarInputs";
 import '../../styles/Movimientos.css'
+
+
+
+
 export function ModalNuevoMovimiento(props) {
   const registrarMovimiento = (event) => {
     event.preventDefault();
@@ -21,7 +28,6 @@ export function ModalNuevoMovimiento(props) {
     let mesHoy = numeroAMes(mesMovimiento)
     console.log(mesHoy)
     let existeMes =  props.infoUser.finanzas[añoMovimiento].some((a)=>a.mes === mesHoy)
-    // let existeMes =  props.infoUser.finanzas[añoMovimiento].some((a)=>console.log(a))
 
     console.log(existeMes)
     if (!existeMes) {
@@ -34,47 +40,11 @@ export function ModalNuevoMovimiento(props) {
     localStorage.setItem("info", JSON.stringify(props.infoUser))
     props.setInfoUser(props.infoUser)
     alert('Registro de Movimiento exitoso. Si deseea verlo dirigase a "Movimientos"')
+    limpiarInputs(event)
   };
 
-  const limpiarInputs = (event)=>{
-    event.target[1].value = ''
-    event.target[2].value = ''
-    event.target[3].value = ''
-    event.target[4].checked = false
-    event.target[5].checked = false
-    event.target[6].checked = false
-    event.target[7].checked = false
-    event.target[8].checked = false
-  }
-
-  function numeroAMes(numero) {
-    let meses = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
-    ];
-    return meses[numero - 1];
-  }
-  function fechaHoy() {
-    let fecha = new Date();
-    return {
-      dia: fecha.getDate(),
-      mes: (fecha.getMonth() + 1),
-      año: fecha.getFullYear(),
-    };
-  }
-
   let { dia, mes, año } = fechaHoy();
-
+  
   return (
     <article className={`container-modal ${!props.isOpenModal && 'invisible'}`}>
       <div className="modal-movimiento">

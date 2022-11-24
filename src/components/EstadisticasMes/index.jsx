@@ -8,9 +8,10 @@ export  function EstadisticasMes({dataMes}) {
   let totalIngresosMes = ingresosArray.length !=  0 ? ingresosArray.reduce((a,b)=>(a.valor+b.valor)) : 0
   let totalGastosMes = gastosArray.length !=  0  ? gastosArray.reduce((a,b)=>(a.valor+b.valor)) : 0 
 
-
+  console.log(dataMes.gastos.filter((a)=>(console.log(a))))
   let ingresos = typeof totalIngresosMes === 'object' ? totalIngresosMes.valor : totalIngresosMes
   let gastos = typeof totalGastosMes === 'object' ? totalGastosMes.valor : totalGastosMes
+  // console.log(ingresos)
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>
