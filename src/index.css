@@ -99,7 +99,7 @@ button:hover {
 
 .panel-profile{
   margin: auto;
-  padding: 20px;
+  padding: 15px;
   max-width: 500px;
   gap: 10px;
 }
@@ -107,7 +107,7 @@ button:hover {
 .info-profile{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -128,7 +128,8 @@ button:hover {
 
 
 .saldo-actual{
-  margin: 30px;
+  margin: 20px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -138,6 +139,7 @@ button:hover {
 .saldo-actual > h4{
   font-size: 1.9rem;
   color: red;
+  text-align: center;
 }
 
 .saldo-actual > p{
@@ -228,9 +230,6 @@ textarea{
 @media (width < 430px) {           
   .fecha-item::first-line{
     font-size: 0.7rem;
-  }
-  .panel-profile{
-    margin: auto 30px;
   }
 }  
 

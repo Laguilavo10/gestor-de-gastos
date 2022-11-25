@@ -9,6 +9,7 @@ import { ItemMovimiento } from "./components/ItemMovimiento";
 import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
 import { CrearPerfil } from "./components/CrearPerfil";
 import { EstadisticasMes } from "./components/EstadisticasMes";
+import { NoHayRegistro } from "./components/NoHayRegistro";
 
 function App() {
   const [optionRender, setoptionRender] = useState("profile");
@@ -22,7 +23,6 @@ function App() {
     JSON.parse(localStorage.getItem("info"))
   );
 
-
   function renderSection(optionRender) {
     switch (optionRender) {
       case "profile":
@@ -34,21 +34,29 @@ function App() {
           />
         );
       case "stats":
-        return (
-          <Estadisticas>
-            {infoUser.finanzas[2022].map((a) => (
-              <EstadisticasMes dataMes={a} key={a.mes}/>
-            ))}
-          </Estadisticas>
-        );
+        if (infoUser.finanzas[2022].length == 0) {
+          <NoHayRegistro />;
+        } else {
+          return (
+            <Estadisticas>
+              {infoUser.finanzas[2022].map((a) => (
+                <EstadisticasMes dataMes={a} key={a.mes} />
+              ))}
+            </Estadisticas>
+          );
+        }
       case "movimientos":
-        return (
-          <Movimientos>
-            {infoUser.finanzas[2022][0].gastos.map((a, index) => (
-              <ItemMovimiento infoGasto={a} key={index} />
-            ))}
-          </Movimientos>
-        );
+        if (infoUser.finanzas[2022].length == 0) {
+          return <NoHayRegistro />;
+        } else {
+          return (
+            <Movimientos>
+              {infoUser.finanzas[2022][0].gastos.map((a, index) => (
+                <ItemMovimiento infoGasto={a} key={index} />
+              ))}
+            </Movimientos>
+          );
+        }
     }
   }
 
