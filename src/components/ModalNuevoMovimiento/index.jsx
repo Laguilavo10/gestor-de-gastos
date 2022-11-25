@@ -7,22 +7,22 @@ import "../../styles/Movimientos.css";
 import mostrarAlerta from "../../functions/mostrarAlerta";
 
 export function ModalNuevoMovimiento(props) {
+
+
   const registrarMovimiento = (event) => {
+
     event.preventDefault();
-    let metodo = "";
-    for (let index = 4; index <= 8; index++) {
-      let i = event.target[index];
-      if (i.checked) {
-        metodo = i.value;
-      }
-    }
-    
+
+    let inputsArray = [...event.target];
+
+    let metodo = inputsArray.find(a =>(a.checked));
+
     let infoMovimiento = {
       fecha: event.target[0].value,
       valor: Number(event.target[1].value),
       transaccion: event.target[2].value,
       descripcion: event.target[3].value,
-      metodo,
+      metodo: metodo.value,
     };
 
     let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split("-");
@@ -50,8 +50,6 @@ export function ModalNuevoMovimiento(props) {
     mostrarAlerta(setAlerta, alerta)
     limpiarInputs(event);
   };
-
-
 
   const [alerta, setAlerta] = useState(false);
 
