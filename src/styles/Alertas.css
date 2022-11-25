@@ -1,0 +1,29 @@
+:root{
+  --back-error:#382328;
+  --back-exito:#5a8627;
+  --border-exito:#2d4e1f;
+  --border-error:#713539;
+
+}
+
+.alertas{
+  display: flex;
+  color: aliceblue;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  margin: 20px;
+  z-index: 100;
+}
+
+.alerta-exitosa{
+  background-color: var(--back-exito);
+  border: 2px solid var(--border-exito);
+}
+
+.alerta-error{
+  background-color: var(--back-error);
+  border: 2px solid var(--border-error);
+}
