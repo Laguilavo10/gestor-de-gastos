@@ -21,7 +21,7 @@ function App() {
   const [infoUser, setInfoUser] = useState(
     JSON.parse(localStorage.getItem("info"))
   );
-  // console.log(infoUser);
+
 
   function renderSection(optionRender) {
     switch (optionRender) {
