@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid tomato; */
+  outline: 1px solid tomato;
   font-family: "Rubik", sans-serif;
 }
 
@@ -21,8 +21,10 @@ button:hover {
 #root {
   display: flex;
   flex-direction: column;
-  /* height: calc(100vh - 75px); */
-  margin-bottom: 100px;
+  height: calc(100vh);
+  padding-bottom: 75px;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .invisible{
