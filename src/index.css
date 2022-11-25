@@ -21,8 +21,8 @@ button:hover {
 #root {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 75px);
-  /* overflow-x: hidden; */
+  /* height: calc(100vh - 75px); */
+  margin-bottom: 100px;
 }
 
 .invisible{
