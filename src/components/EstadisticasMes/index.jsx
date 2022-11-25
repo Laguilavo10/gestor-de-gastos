@@ -11,7 +11,7 @@ export  function EstadisticasMes({dataMes}) {
   console.log(dataMes.gastos.filter((a)=>(console.log(a))))
   let ingresos = typeof totalIngresosMes === 'object' ? totalIngresosMes.valor : totalIngresosMes
   let gastos = typeof totalGastosMes === 'object' ? totalGastosMes.valor : totalGastosMes
-  // console.log(ingresos)
+
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>

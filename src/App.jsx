@@ -8,7 +8,6 @@ import { NavMobile } from "./components/NavMobile";
 import { ItemMovimiento } from "./components/ItemMovimiento";
 import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
 import { CrearPerfil } from "./components/CrearPerfil";
-import { user } from "./infoFinanzas";
 import { EstadisticasMes } from "./components/EstadisticasMes";
 
 function App() {

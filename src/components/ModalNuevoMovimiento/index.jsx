@@ -4,6 +4,7 @@ import numeroAMes from "../../functions/numeroAMes";
 import { limpiarInputs } from "../../functions/limpiarInputs";
 import { Alertas } from "../Alertas";
 import "../../styles/Movimientos.css";
+import mostrarAlerta from "../../functions/mostrarAlerta";
 
 export function ModalNuevoMovimiento(props) {
   const registrarMovimiento = (event) => {
@@ -15,6 +16,7 @@ export function ModalNuevoMovimiento(props) {
         metodo = i.value;
       }
     }
+    
     let infoMovimiento = {
       fecha: event.target[0].value,
       valor: Number(event.target[1].value),
@@ -22,8 +24,8 @@ export function ModalNuevoMovimiento(props) {
       descripcion: event.target[3].value,
       metodo,
     };
-    let [añoMovimiento, mesMovimiento, diaMovimiento] =
-      infoMovimiento.fecha.split("-");
+
+    let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split("-");
     let mesHoy = numeroAMes(mesMovimiento);
     let existeMes = props.infoUser.finanzas[añoMovimiento].some(
       (a) => a.mes === mesHoy
@@ -45,12 +47,11 @@ export function ModalNuevoMovimiento(props) {
     localStorage.setItem("info", JSON.stringify(props.infoUser));
     props.setInfoUser(props.infoUser);
 
-    setAlerta(true); //dejar ver la alerta
-    setTimeout(() => {
-      setAlerta(false); //despues de dos segundos se quita la alerta
-    }, 2000);
+    mostrarAlerta(setAlerta, alerta)
     limpiarInputs(event);
   };
+
+
 
   const [alerta, setAlerta] = useState(false);
 
