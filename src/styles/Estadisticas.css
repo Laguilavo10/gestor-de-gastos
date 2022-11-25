@@ -33,6 +33,8 @@
 
 .mes{
   color: aliceblue;
+  text-align: center;
+  font-size: 1.5rem;
 }
 .container-stats{
   display: flex;
