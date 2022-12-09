@@ -14,7 +14,7 @@ import fechaHoy from "./functions/fechaHoy";
 import numeroAMes from "./functions/numeroAMes";
 
 function App() {
-  const [optionRender, setoptionRender] = useState("profile");
+  const [optionRender, setoptionRender] = useState("movimientos");
   const [isOpenModal, setIsOpenModal] = useState(false);
   let userLocalStorage = JSON.parse(localStorage.getItem("info"));
 
@@ -28,6 +28,7 @@ function App() {
   let { mes, año } = fechaHoy();
   let indexMes = infoUser.finanzas[año].findIndex((a)=>(a.mes === numeroAMes(mes)))
 
+  console.log(infoUser.finanzas[año][indexMes].gastos)
   function renderSection(optionRender) {
     switch (optionRender) {
       case "profile":
@@ -44,20 +45,20 @@ function App() {
         } else {
           return (
             <Estadisticas>
-              {infoUser.finanzas[año].map((a) => (
+              {infoUser.finanzas[año].reverse().map((a) => (
                 <EstadisticasMes dataMes={a} key={a.mes} />
               ))}
             </Estadisticas>
           );
         }
       case "movimientos":
-        if (infoUser.finanzas[año].length == 0) {
-          return <NoHayRegistro />;
+        if (infoUser.finanzas[año][indexMes].gastos.length == 0) {
+          return <NoHayRegistro text={'este mes'}/>;
         } else {
           return (
             <Movimientos>
               {infoUser.finanzas[año][indexMes].gastos.map((a, index) => (
-                <ItemMovimiento infoGasto={a} key={index} />
+                <ItemMovimiento infoGasto={a} key={index} infoUser={infoUser} setInfoUser={setInfoUser}/>
               ))}
             </Movimientos>
           );

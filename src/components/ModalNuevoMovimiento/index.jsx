@@ -1,58 +1,11 @@
 import React, { useState } from "react";
 import fechaHoy from "../../functions/fechaHoy";
-import numeroAMes from "../../functions/numeroAMes";
-import { limpiarInputs } from "../../functions/limpiarInputs";
 import { Alertas } from "../Alertas";
 import "../../styles/Movimientos.css";
-import mostrarAlerta from "../../functions/mostrarAlerta";
+import registrarMovimiento from "../../functions/registroMovimiento";
 
 export function ModalNuevoMovimiento(props) {
-
-
-  const registrarMovimiento = (event) => {
-
-    event.preventDefault();
-
-    let inputsArray = [...event.target];
-
-    let metodo = inputsArray.find(a =>(a.checked));
-
-    let infoMovimiento = {
-      fecha: event.target[0].value,
-      valor: Number(event.target[1].value),
-      transaccion: event.target[2].value,
-      descripcion: event.target[3].value,
-      metodo: metodo.value,
-    };
-
-    let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split("-");
-    let mesHoy = numeroAMes(mesMovimiento);
-    let existeMes = props.infoUser.finanzas[añoMovimiento].some(
-      (a) => a.mes === mesHoy
-    );
-
-    if (!existeMes) {
-      props.infoUser.finanzas[añoMovimiento].push({
-        mes: mesHoy,
-        saldoFinal: 0,
-        gastos: [],
-      });
-    }
-
-    let i = props.infoUser.finanzas[añoMovimiento].findIndex(
-      (a) => a.mes === mesHoy
-    );
-    props.infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento);
-
-    localStorage.setItem("info", JSON.stringify(props.infoUser));
-    props.setInfoUser(props.infoUser);
-
-    mostrarAlerta(setAlerta, alerta)
-    limpiarInputs(event);
-  };
-
   const [alerta, setAlerta] = useState(false);
-
   let { dia, mes, año } = fechaHoy();
 
   return (
@@ -63,12 +16,24 @@ export function ModalNuevoMovimiento(props) {
         <div className="modal-movimiento">
           <h3>Registrar Nuevo Movimiento</h3>
           <form
-            onSubmit={registrarMovimiento}
+            onSubmit={(event) =>
+              registrarMovimiento(
+                event,
+                props.infoUser,
+                props.setInfoUser,
+                setAlerta,
+                alerta
+              )
+            }
             className="form-nuevo-movimiento"
           >
             <label>
               Fecha
-              <input type="date" defaultValue={`${año}-${mes}-${dia}`} />
+              <input
+                type="date"
+                defaultValue={`${año}-${mes}-${dia}`}
+                required
+              />
             </label>
             <label>
               Valor

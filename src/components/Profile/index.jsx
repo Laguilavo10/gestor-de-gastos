@@ -3,6 +3,7 @@ import React from 'react'
 
 export  function Profile(props) {
 
+  // console.log(props.infoUser.finanzas)
   return (
     <>
     <aside className='panel-profile panel'>

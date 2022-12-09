@@ -2,11 +2,22 @@ import React from "react";
 import arrowDown from '../../assets/arrow-down.png'
 import arrowUp from '../../assets/arrow-up.png'
 import numeroAMes from "../../functions/numeroAMes";
+import papelera from '../../assets/delete-trash-svgrepo-com.svg'
 
-export function ItemMovimiento({infoGasto}) {
+export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
   let fecha = infoGasto.fecha.split('-')
   let transaccion = infoGasto.transaccion === 'ingreso' ? ['ingreso-item', 'reverse-item', arrowUp] : ['gasto-item', '', arrowDown]
+  let mes = numeroAMes(fecha[1])
   let mesAbreviado = numeroAMes(fecha[1]).split('', 3).join('')
+  // console.log(numeroAMes(fecha[1]))
+  const eliminarItem = ()=>{
+    let nose = infoUser.finanzas[fecha[0]].findIndex((a)=>(a.mes === mes))
+    let i = infoUser.finanzas[fecha[0]][nose].gastos.findIndex((a)=>(a == infoGasto))
+    infoUser.finanzas[fecha[0]][nose].gastos.splice(i, 1)
+    localStorage.setItem("info", JSON.stringify(infoUser))
+    let copiaInfoUser = JSON.parse(JSON.stringify(infoUser))
+    setInfoUser(copiaInfoUser)
+  }
 
   return (
     <>
@@ -24,6 +35,7 @@ export function ItemMovimiento({infoGasto}) {
             <span>${new Intl.NumberFormat().format(infoGasto.valor)}</span> {/*sirve para poner el punto de los decimales*/}
           </div>
           <p>{infoGasto.descripcion}</p>
+          <img src={papelera} alt="eliminar" className="eliminar-icon" onClick={eliminarItem}/>
         </div>
       </article>
     </>
