@@ -7,8 +7,8 @@
 }
 
 :root {
-  --background: #011936;
-  --nav-bar: #465362;
+  --background: #343a40;
+  --nav-bar: #2d5980;
 }
 body {
   background-color: var(--background);
@@ -57,51 +57,13 @@ button:hover {
   border-radius: 20px;
 }
 
-
-.nav-mobile {
-  width: 100%;
-  background-color: var(--nav-bar);
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  height: 70px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border-top-left-radius: 20px; 
-  border-top-right-radius: 20px; 
-  z-index: 10;
-  border-top: 2px solid black;
-}
-
-.nav-mobile > button {
-  padding: 5px;
-  height: 80%;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 10px;
-  font-size: 0.8rem;
-  border: none;
-  background: none;
-}
-
-.nav-mobile > button:hover {
-  background-color: rgba(247, 247, 247, 0.61);
-}
-
-.nav-mobile > button > img {
-  width: 30px;
-  height: 40px;
-}
-
 .panel-profile{
-  margin: auto;
+  margin: auto 20px;
   padding: 15px;
   max-width: 500px;
   gap: 10px;
+  justify-self: center;
+  align-self: center;
 }
 
 .info-profile{

@@ -8,6 +8,7 @@ export function Movimientos(props) {
     section.scrollTop = section.scrollHeight
   }, [])
     let movimientosOrdenados = props.children.sort((a, b)=>(a.props.infoGasto.fecha.split('-')[2] - b.props.infoGasto.fecha.split('-')[2]))
+    console.log(props.children)
   return (
     <>
       <div className='search-container'>

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 import { Header } from "./components/Header";
-import { Estadisticas } from "./components/Estadisticas";
-import { Movimientos } from "./components/Movimientos";
-import { Profile } from "./components/Profile";
-import { NavMobile } from "./components/NavMobile";
-import { ItemMovimiento } from "./components/ItemMovimiento";
-import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
 import { CrearPerfil } from "./components/CrearPerfil";
-import { EstadisticasMes } from "./components/EstadisticasMes";
 import { NoHayRegistro } from "./components/NoHayRegistro";
+import { Estadisticas } from "./components/Estadisticas";
+import { EstadisticasMes } from "./components/EstadisticasMes";
+import { Profile } from "./components/Profile";
+import { Movimientos } from "./components/Movimientos";
+import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
+import { ItemMovimiento } from "./components/ItemMovimiento";
+import { NavMobile } from "./components/NavMobile";
+import fechaHoy from "./functions/fechaHoy";
+import numeroAMes from "./functions/numeroAMes";
 
 function App() {
   const [optionRender, setoptionRender] = useState("profile");
@@ -23,6 +25,9 @@ function App() {
     JSON.parse(localStorage.getItem("info"))
   );
 
+  let { mes, año } = fechaHoy();
+  let indexMes = infoUser.finanzas[año].findIndex((a)=>(a.mes === numeroAMes(mes)))
+
   function renderSection(optionRender) {
     switch (optionRender) {
       case "profile":
@@ -34,24 +39,24 @@ function App() {
           />
         );
       case "stats":
-        if (infoUser.finanzas[2022].length == 0) {
+        if (infoUser.finanzas[año].length == 0) {
           <NoHayRegistro />;
         } else {
           return (
             <Estadisticas>
-              {infoUser.finanzas[2022].map((a) => (
+              {infoUser.finanzas[año].map((a) => (
                 <EstadisticasMes dataMes={a} key={a.mes} />
               ))}
             </Estadisticas>
           );
         }
       case "movimientos":
-        if (infoUser.finanzas[2022].length == 0) {
+        if (infoUser.finanzas[año].length == 0) {
           return <NoHayRegistro />;
         } else {
           return (
             <Movimientos>
-              {infoUser.finanzas[2022][0].gastos.map((a, index) => (
+              {infoUser.finanzas[año][indexMes].gastos.map((a, index) => (
                 <ItemMovimiento infoGasto={a} key={index} />
               ))}
             </Movimientos>

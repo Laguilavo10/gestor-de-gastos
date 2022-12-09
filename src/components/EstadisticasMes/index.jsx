@@ -4,12 +4,12 @@ import Subir from "../../assets/arrow-up.png";
 
 export  function EstadisticasMes({dataMes}) {
 
-  let ingresosArray = dataMes.gastos.filter((a)=>(a.transaccion ==='ingreso')).map((a)=>((a.valor)))
-  let gastosArray = dataMes.gastos.filter((a)=>(a.transaccion === 'gasto')).map((a)=>((a.valor)))
+  let ingresosArray = dataMes.gastos.filter((a)=>(a.transaccion ==='ingreso'))
+  let gastosArray = dataMes.gastos.filter((a)=>(a.transaccion === 'gasto'))
  
-  let totalIngresosMes = ingresosArray.length !=  0 ? ingresosArray.reduce((a,b)=>(a+b)) : 0
-  let totalGastosMes = gastosArray.length !=  0  ? gastosArray.reduce((a,b)=>(a+b)) : 0 
-
+  let totalIngresosMes = ingresosArray.length !=  0 ? ingresosArray.reduce((a , b)=>(a + b.valor), 0) : 0
+  let totalGastosMes = gastosArray.length !=  0  ? gastosArray.reduce((a, b)=>(a + b.valor), 0) : 0 
+//reduce recibe la arrow function en donde a es la variable que guarda el acumulado y b es el valor del array que se supa,ademas tambien recibe un segundo parametro en donde es el valor inicial de a
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>
