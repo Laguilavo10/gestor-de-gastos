@@ -9,7 +9,6 @@ export  function NoHayRegistro({text = ""}) {
       </p>
       <p className='apuntador'>🔽</p>
     </div>
-    {/* <img src="" alt="" /> */}
     </>
   )
 }

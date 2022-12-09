@@ -12,19 +12,19 @@ export function NavMobile(props) {
           />
           Estadisticas
         </button>
-        <button onClick={(a)=>(props.setoptionRender('movimientos'))}>
-          <img
-            src="https://img.icons8.com/glyph-neue/64/null/activity-history.png"
-            alt=""
-          />
-          Movimientos
-        </button>
         <button onClick={(a)=>(props.setoptionRender('profile'))}>
           <img
             src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/null/external-profile-web-smashingstocks-glyph-smashing-stocks.png"
             alt=""
           />
           Profile
+        </button>
+        <button onClick={(a)=>(props.setoptionRender('movimientos'))}>
+          <img
+            src="https://img.icons8.com/glyph-neue/64/null/activity-history.png"
+            alt=""
+          />
+          Movimientos
         </button>
       </nav>
     </>
