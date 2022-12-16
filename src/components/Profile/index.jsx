@@ -1,9 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
+import { ModalNuevoMovimiento } from '../ModalNuevoMovimiento'
 // import Menu from "../../assets/icons8-menú.gif";
 
 export  function Profile(props) {
-
-  // console.log(props.infoUser.finanzas)
+  const [isOpenModal, setIsOpenModal] = useState(false);
   return (
     <>
     <aside className='panel-profile panel'>
@@ -15,11 +15,12 @@ export  function Profile(props) {
         <h4>Saldo Actual</h4>
         <p>${props.infoUser.saldo}</p>
       <div>
-        <button onClick={(a)=>(props.setIsOpenModal(true))}>Nuevo Movimiento</button>
+        <button onClick={(a)=>(setIsOpenModal(true))}>Nuevo Movimiento</button>
       </div>
       </div>
     </aside>
-    
+
+    {isOpenModal && <ModalNuevoMovimiento infoUser={props.infoUser} setInfoUser={props.setInfoUser} setIsOpenModal={setIsOpenModal}/>}
     </>
   )
 }

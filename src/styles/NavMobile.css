@@ -8,11 +8,9 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  /* z-index: 10; */
-  /* border-top: 2px solid black; */
 }
 
-.nav-mobile > button {
+.nav-mobile > a {
   padding: 5px;
   height: 80%;
   width: 100px;
@@ -23,14 +21,14 @@
   border-radius: 10px;
   font-size: 0.8rem;
   border: none;
-
+  background: none;
 }
 
-.nav-mobile > button:hover {
+/* .nav-mobile > a:hover {
   background-color: rgba(247, 247, 247, 0.61);
-}
+} */
 
-.nav-mobile > button > img {
+.nav-mobile > a > img {
   width: 30px;
   height: 40px;
 }

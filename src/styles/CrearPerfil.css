@@ -51,6 +51,13 @@
   margin: auto;
 }
 
+/* .nav-inactive{
+  pointer-events: none;
+} */
+
+.nav-inactive :hover{
+  cursor: not-allowed;
+}
 @media (width < 600px) {
   .container-registro > img{
     display: none;

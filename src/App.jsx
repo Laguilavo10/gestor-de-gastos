@@ -1,90 +1,89 @@
-import { useEffect, useState } from "react";
-import "./index.css";
-import { Header } from "./components/Header";
-import { CrearPerfil } from "./components/CrearPerfil";
-import { NoHayRegistro } from "./components/NoHayRegistro";
-import { Estadisticas } from "./components/Estadisticas";
-import { EstadisticasMes } from "./components/EstadisticasMes";
-import { Profile } from "./components/Profile";
-import { Movimientos } from "./components/Movimientos";
-import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento";
-import { ItemMovimiento } from "./components/ItemMovimiento";
-import { NavMobile } from "./components/NavMobile";
-import fechaHoy from "./functions/fechaHoy";
-import numeroAMes from "./functions/numeroAMes";
+import { useEffect, useState } from "react"
+import { CrearPerfil } from "./components/CrearPerfil"
+import { Estadisticas } from "./components/Estadisticas"
+import { EstadisticasMes } from "./components/EstadisticasMes"
+import { HashRouter, Route, Routes } from "react-router-dom"
+import { Header } from "./components/Header"
+import { ItemMovimiento } from "./components/ItemMovimiento"
+import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento"
+import { Movimientos } from "./components/Movimientos"
+import { NavMobile } from "./components/NavMobile"
+import { NoHayRegistro } from "./components/NoHayRegistro"
+import { Profile } from "./components/Profile"
+import fechaHoy from "./functions/fechaHoy"
+import numeroAMes from "./functions/numeroAMes"
+import "./index.css"
 
 function App() {
-  debugger
-  const [optionRender, setoptionRender] = useState("profile");
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  let userLocalStorage = JSON.parse(localStorage.getItem("info"));
+  // debugger
+  let userLocalStorage = JSON.parse(localStorage.getItem("info"))
 
   if (userLocalStorage == null) {
-    localStorage.setItem("info", JSON.stringify(null));
+    localStorage.setItem("info", JSON.stringify(null))
   }
-  const [infoUser, setInfoUser] = useState(
-    JSON.parse(localStorage.getItem("info"))
-  );
+  const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("info")))
 
-  
-  // console.log(infoUser.finanzas[año][indexMes].gastos)
-  function renderSection(optionRender) {
-    let { mes, año } = fechaHoy();
-  
-    let indexMes = infoUser.finanzas[año].findIndex((a)=>(a.mes === numeroAMes(mes)))
-    switch (optionRender) {
-      case "profile":
-        return (
-          <Profile
-            isOpenModal={isOpenModal}
-            setIsOpenModal={setIsOpenModal}
-            infoUser={infoUser}
-          />
-        );
-      case "stats":
-        if (infoUser.finanzas[año].length == 0) {
-          <NoHayRegistro />;
-        } else {
-          return (
-            <Estadisticas>
-              {infoUser.finanzas[año].reverse().map((a) => (
-                <EstadisticasMes dataMes={a} key={a.mes} />
-              ))}
-            </Estadisticas>
-          );
-        }
-      case "movimientos":
-        if (infoUser.finanzas[año].length == 0) {
-          return <NoHayRegistro/>;
-        } else {
-          return (
-            <Movimientos>
-              {infoUser.finanzas[año][indexMes].gastos.map((a, index) => (
-                <ItemMovimiento infoGasto={a} key={index} infoUser={infoUser} setInfoUser={setInfoUser}/>
-              ))}
-            </Movimientos>
-          );
-        }
+  let { mes, año } = fechaHoy()
+
+  const indexMes = () => {
+    if (infoUser != null) {
+      let indexMes = infoUser.finanzas[año].findIndex(
+        (a) => a.mes === numeroAMes(mes)
+      )
+      return indexMes
     }
   }
 
   return (
     <>
-      <Header />
-      <ModalNuevoMovimiento
-        isOpenModal={isOpenModal}
-        setIsOpenModal={setIsOpenModal}
-        infoUser={infoUser}
-        setInfoUser={setInfoUser}
-      />
-      {!infoUser ? (
-        <CrearPerfil setInfoUser={setInfoUser} />
-      ) : (
-        renderSection(optionRender)
-      )}
-      <NavMobile setoptionRender={setoptionRender}></NavMobile>
+      <HashRouter>
+        <Header />
+        <Routes>
+          {!infoUser ? (
+            <Route
+              path=""
+              element={<CrearPerfil setInfoUser={setInfoUser} />}
+            />
+          ) : (
+            <>
+              <Route
+                path="/"
+                element={
+                  <Profile infoUser={infoUser} setInfoUser={setInfoUser} />
+                }
+              />
+              <Route
+                path="estadisticas"
+                element={
+                  <Estadisticas>
+                    {infoUser.finanzas[año].reverse().map((a) => (
+                      <EstadisticasMes dataMes={a} key={a.mes} />
+                    ))}
+                  </Estadisticas>
+                }
+              />
+              <Route
+                path="movimientos"
+                element={
+                  <Movimientos>
+                    {infoUser.finanzas[año][indexMes()].gastos.map((a, index) => (
+                      <ItemMovimiento
+                        infoGasto={a}
+                        key={index}
+                        infoUser={infoUser}
+                        setInfoUser={setInfoUser}
+                      />
+                    ))}
+                  </Movimientos>
+                }
+              />
+            </>
+          )}
+        </Routes>
+        <NavMobile infoUser={infoUser}/>
+      </HashRouter>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

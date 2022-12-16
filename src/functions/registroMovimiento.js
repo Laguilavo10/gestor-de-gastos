@@ -2,13 +2,18 @@ import numeroAMes from "./numeroAMes";
 import { limpiarInputs } from "./limpiarInputs";
 import mostrarAlerta from "./mostrarAlerta";
 
-export default function registrarMovimiento(event, infoUser, setInfoUser, setAlerta, alerta){
-  console.log(event)
+export default function registrarMovimiento(
+  event,
+  infoUser,
+  setInfoUser,
+  setAlerta,
+  alerta
+) {
   event.preventDefault();
 
   let inputsArray = [...event.target];
 
-  let metodo = inputsArray.find(a =>(a.checked));
+  let metodo = inputsArray.find((a) => a.checked);
 
   let infoMovimiento = {
     fecha: event.target[0].value,
@@ -18,7 +23,8 @@ export default function registrarMovimiento(event, infoUser, setInfoUser, setAle
     metodo: metodo.value,
   };
 
-  let [añoMovimiento, mesMovimiento, diaMovimiento] = infoMovimiento.fecha.split("-");
+  let [añoMovimiento, mesMovimiento, diaMovimiento] =
+    infoMovimiento.fecha.split("-");
   let mesHoy = numeroAMes(mesMovimiento);
   let existeMes = infoUser.finanzas[añoMovimiento].some(
     (a) => a.mes === mesHoy
@@ -32,14 +38,11 @@ export default function registrarMovimiento(event, infoUser, setInfoUser, setAle
     });
   }
 
-  let i = infoUser.finanzas[añoMovimiento].findIndex(
-    (a) => a.mes === mesHoy
-  );
+  let i = infoUser.finanzas[añoMovimiento].findIndex((a) => a.mes === mesHoy);
   infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento);
 
   localStorage.setItem("info", JSON.stringify(infoUser));
   setInfoUser(infoUser);
-
-  mostrarAlerta(setAlerta, alerta)
+  mostrarAlerta(setAlerta, alerta);
   limpiarInputs(event);
-};
+}

@@ -7,12 +7,9 @@ import registrarMovimiento from "../../functions/registroMovimiento";
 export function ModalNuevoMovimiento(props) {
   const [alerta, setAlerta] = useState(false);
   let { dia, mes, año } = fechaHoy();
-
   return (
     <>
-      <article
-        className={`container-modal ${!props.isOpenModal && "invisible"}`}
-      >
+      <article className={'container-modal'}>
         <div className="modal-movimiento">
           <h3>Registrar Nuevo Movimiento</h3>
           <form

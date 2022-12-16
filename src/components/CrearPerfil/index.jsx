@@ -1,7 +1,10 @@
 import React from "react";
 import "../../styles/CrearPerfil.css";
+import fechaHoy from "../../functions/fechaHoy";
+import numeroAMes from "../../functions/numeroAMes";
 
 export function CrearPerfil(props) {
+
   function crearPerfil(event) {
     event.preventDefault();
     let nombre = event.target[0].value;
@@ -10,22 +13,17 @@ export function CrearPerfil(props) {
     try {
       new URL(imgPerfil);
     } catch (error) {
-      alert("URL de imagen de perfil invalida. Intente de nuevo");
-      return;
+      return alert("URL de imagen de perfil invalida. Intente de nuevo");
     }
+    let { mes, año } = fechaHoy();
+
     let user = {
       nombre,
       imgPerfil,
       saldo,
       ultimoSaldo: saldo,
       finanzas: {
-        2022: [],
-        2023: [],
-        2024: [],
-        2025: [],
-        2026: [],
-        2027: [],
-        2028: [],
+        [año]: [{ mes: numeroAMes(mes), saldoFinal: 0, gastos: [] }], //se crea el objeto con la key del año en curso y con el mes en curso
       },
     };
     props.setInfoUser(user);
