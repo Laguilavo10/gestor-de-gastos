@@ -22,11 +22,9 @@
   font-size: 0.8rem;
   border: none;
   background: none;
+  text-decoration: none;
+  color: black;
 }
-
-/* .nav-mobile > a:hover {
-  background-color: rgba(247, 247, 247, 0.61);
-} */
 
 .nav-mobile > a > img {
   width: 30px;

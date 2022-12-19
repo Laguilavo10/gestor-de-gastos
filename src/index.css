@@ -60,7 +60,9 @@ button:hover {
 .panel-profile{
   margin: auto 20px;
   padding: 15px;
+  width: 100%;
   max-width: 500px;
+  min-width: 400px;
   gap: 10px;
   justify-self: center;
   align-self: center;
@@ -125,7 +127,6 @@ button:hover {
 .modal-movimiento{
   background-color: rebeccapurple;
   width: 80%;
-
   border-radius: 30px;
   padding: 15px;
   max-width: 400px;
@@ -189,16 +190,20 @@ textarea{
   gap: 5px;
 }
 
-@media (width < 430px) {           
-  .fecha-item::first-line{
-    font-size: 0.7rem;
-  }
-}  
-
 @media (width < 710px) {           
   .saldo-actual{
     margin: 20px auto;
     height: 120px;
   }
 }  
+
+@media (width < 430px) {           
+  .fecha-item::first-line{
+    font-size: 0.7rem;
+  }
+  .panel-profile{
+    min-width: 200px;
+  }
+}  
+
 
