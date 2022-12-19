@@ -42,7 +42,7 @@ export default function registrarMovimiento(
   infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento);
 
   localStorage.setItem("info", JSON.stringify(infoUser));
-  setInfoUser(infoUser);
+  setInfoUser({...infoUser});
   mostrarAlerta(setAlerta, alerta);
   limpiarInputs(event);
 }

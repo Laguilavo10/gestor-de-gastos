@@ -33,7 +33,7 @@ function App() {
       return indexMes
     }
   }
-
+  console.log(infoUser)
   return (
     <>
       <HashRouter>
