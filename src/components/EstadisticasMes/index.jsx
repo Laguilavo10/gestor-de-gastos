@@ -1,6 +1,8 @@
 import React from 'react'
 import Bajar from "../../assets/arrow-down.png";
 import Subir from "../../assets/arrow-up.png";
+import jsPDF from "jspdf";
+import { crearPDF } from '../../functions/crearPDF';
 
 export  function EstadisticasMes({dataMes}) {
 
@@ -9,7 +11,17 @@ export  function EstadisticasMes({dataMes}) {
  
   let totalIngresosMes = ingresosArray.length !=  0 ? ingresosArray.reduce((a , b)=>(a + b.valor), 0) : 0
   let totalGastosMes = gastosArray.length !=  0  ? gastosArray.reduce((a, b)=>(a + b.valor), 0) : 0 
-//reduce recibe la arrow function en donde a es la variable que guarda el acumulado y b es el valor del array que se supa,ademas tambien recibe un segundo parametro en donde es el valor inicial de a
+
+  // let dataMesString = dataMes.gastos.map((a)=>{
+  //   let valorDecimal = Intl.NumberFormat().format(a.valor)
+  //   let valorString = valorDecimal.toString()
+  //   a.valor = valorString
+  //   return (a)
+  // })
+  
+
+
+
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>
@@ -38,7 +50,7 @@ export  function EstadisticasMes({dataMes}) {
             <span>Gastos</span>
           </div>
         </div>
-        <p className="saldo-fin-mes">Saldo a fin de mes: {dataMes.saldoFinal}</p>
+        <button className='btn-descarga' onClick={()=>(crearPDF(dataMes, totalIngresosMes, totalGastosMes))}>Descargar Reporte</button>
       </article>
   </div>
   )
