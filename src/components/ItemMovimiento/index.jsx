@@ -9,7 +9,7 @@ export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
   let transaccion = infoGasto.transaccion === 'ingreso' ? ['ingreso-item', 'reverse-item', arrowUp] : ['gasto-item', '', arrowDown]
   let mes = numeroAMes(fecha[1])
   let mesAbreviado = numeroAMes(fecha[1]).split('', 3).join('')
-  // console.log(numeroAMes(fecha[1]))
+
   const eliminarItem = ()=>{
     let nose = infoUser.finanzas[fecha[0]].findIndex((a)=>(a.mes === mes))
     let i = infoUser.finanzas[fecha[0]][nose].gastos.findIndex((a)=>(a == infoGasto))

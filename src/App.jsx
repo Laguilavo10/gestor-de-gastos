@@ -58,7 +58,7 @@ function App() {
                 path="estadisticas"
                 element={<Estadisticas infoUser={infoUser} añoActual={año}/>}
               />
-              <Route
+              {/* <Route
                 path="movimientos"
                 element={
                   <Movimientos>
@@ -73,6 +73,12 @@ function App() {
                       )
                     )}
                   </Movimientos>
+                }
+              /> */}
+              <Route
+                path="movimientos"
+                element={
+                  <Movimientos infoUser={infoUser} setInfoUser={setInfoUser} año={año} indexMes={indexMes}/>
                 }
               />
             </>
