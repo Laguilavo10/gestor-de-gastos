@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import fechaHoy from "../../functions/fechaHoy";
-import { Alertas } from "../Alertas";
-import "../../styles/Movimientos.css";
-import registrarMovimiento from "../../functions/registroMovimiento";
+import React, { useState } from "react"
+import fechaHoy from "../../functions/fechaHoy"
+import { Alertas } from "../Alertas"
+import "../../styles/Movimientos.css"
+import registrarMovimiento from "../../functions/registroMovimiento"
 
 export function ModalNuevoMovimiento(props) {
-  const [alerta, setAlerta] = useState(false);
-  let { dia, mes, año } = fechaHoy();
+  const [alerta, setAlerta] = useState(false)
+  let { dia, mes, año } = fechaHoy()
   return (
     <>
       <article className={'container-modal'}>
@@ -121,5 +121,5 @@ export function ModalNuevoMovimiento(props) {
         />
       )}
     </>
-  );
+  )
 }

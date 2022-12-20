@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { ModalNuevoMovimiento } from "../ModalNuevoMovimiento";
+import { useState } from "react"
+import { ModalNuevoMovimiento } from "../ModalNuevoMovimiento"
 
 export function Profile(props) {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  let saldoInicial = Number(props.infoUser.saldo);
-  let saldoAñosArrays = [];
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  let saldoInicial = Number(props.infoUser.saldo)
+  let saldoAñosArrays = []
 
   for (const key in props.infoUser.finanzas) {
     let totalAño = props.infoUser.finanzas[key]
@@ -12,8 +12,8 @@ export function Profile(props) {
       .reduce(
         (a, b) => (b.transaccion === "ingreso" ? a + b.valor : a - b.valor),
         0
-      );
-      saldoAñosArrays.push(totalAño);
+      )
+      saldoAñosArrays.push(totalAño)
   }
 
   let saldoActual = (saldoAñosArrays.reduce((a, b) => a + b, 0)) + saldoInicial
@@ -44,5 +44,5 @@ export function Profile(props) {
         />
       )}
     </>
-  );
+  )
 }

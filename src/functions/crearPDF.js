@@ -1,6 +1,6 @@
-import jsPDF from "jspdf";
+import jsPDF from "jspdf"
 
-let  header = createHeaders(["fecha", "descripcion", "metodo", "valor", "transaccion"]);
+let  header = createHeaders(["fecha", "descripcion", "metodo", "valor", "transaccion"])
 
 function createHeaders(keys) {
   return keys.map(key => ({
@@ -9,7 +9,7 @@ function createHeaders(keys) {
     'width':50,
     'align':'center',
     'padding':0
-  }));
+  }))
 }
 
 export function crearPDF(dataMes, totalIngresosMes, totalGastosMes, año) {

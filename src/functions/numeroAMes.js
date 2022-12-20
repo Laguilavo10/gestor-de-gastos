@@ -12,6 +12,6 @@ export default function numeroAMes(numero) {
     "Octubre",
     "Noviembre",
     "Diciembre",
-  ];
-  return meses[numero - 1];
+  ]
+  return meses[numero - 1]
 }

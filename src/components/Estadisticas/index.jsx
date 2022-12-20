@@ -1,15 +1,15 @@
-import { useState } from "react";
-import "../../styles/Estadisticas.css";
-import { EstadisticasMes } from "../EstadisticasMes";
+import { useState } from "react"
+import "../../styles/Estadisticas.css"
+import { EstadisticasMes } from "../EstadisticasMes"
 
 export function Estadisticas({ infoUser, añoActual }) {
 
-  const [año, setAño] = useState(añoActual);
+  const [año, setAño] = useState(añoActual)
   let añosDisponibles = Object.keys(infoUser.finanzas)
 
   const añoSeleccionado = (event) => {
-    setAño(event.target.value);
-  };
+    setAño(event.target.value)
+  }
 
   return (
     <section className="stats-container">
@@ -24,5 +24,5 @@ export function Estadisticas({ infoUser, añoActual }) {
         <EstadisticasMes dataMes={a} key={a.mes} año={año}/>
       ))}
     </section>
-  );
+  )
 }

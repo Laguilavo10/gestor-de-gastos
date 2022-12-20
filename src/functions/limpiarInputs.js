@@ -1,8 +1,8 @@
-import fechaHoy from "./fechaHoy";
+import fechaHoy from "./fechaHoy"
 
 
 export  const limpiarInputs = (event)=>{
-  let { dia, mes, año } = fechaHoy();
+  let { dia, mes, año } = fechaHoy()
   event.target[0].value = `${año}-${mes}-${dia}`
   event.target[1].value = ''
   event.target[2].value = ''

@@ -1,12 +1,12 @@
-import React from "react";
-import "../../styles/NavMobile.css";
-import { NavLink } from "react-router-dom";
+import React from "react"
+import "../../styles/NavMobile.css"
+import { NavLink } from "react-router-dom"
 
 export function NavMobile({ infoUser }) {
   const stylesObject = (isActive) => ({
     backgroundColor: isActive && "rgba(247, 247, 247, 0.61)",
     pointerEvents: !infoUser && "none",
-  });
+  })
 
   return (
     <>
@@ -34,5 +34,5 @@ export function NavMobile({ infoUser }) {
         </NavLink>
       </nav>
     </>
-  );
+  )
 }

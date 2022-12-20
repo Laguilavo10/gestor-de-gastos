@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 import arrowDown from '../../assets/arrow-down.png'
 import arrowUp from '../../assets/arrow-up.png'
-import numeroAMes from "../../functions/numeroAMes";
+import numeroAMes from "../../functions/numeroAMes"
 import papelera from '../../assets/delete-trash-svgrepo-com.svg'
 
 export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
@@ -39,5 +39,5 @@ export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
         </div>
       </article>
     </>
-  );
+  )
 }

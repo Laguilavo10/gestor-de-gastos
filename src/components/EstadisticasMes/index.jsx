@@ -1,8 +1,8 @@
 import React from 'react'
-import Bajar from "../../assets/arrow-down.png";
-import Subir from "../../assets/arrow-up.png";
-import jsPDF from "jspdf";
-import { crearPDF } from '../../functions/crearPDF';
+import Bajar from "../../assets/arrow-down.png"
+import Subir from "../../assets/arrow-up.png"
+import jsPDF from "jspdf"
+import { crearPDF } from '../../functions/crearPDF'
 
 export  function EstadisticasMes({dataMes, año}) {
 

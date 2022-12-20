@@ -1,21 +1,21 @@
-import React from "react";
-import "../../styles/CrearPerfil.css";
-import fechaHoy from "../../functions/fechaHoy";
-import numeroAMes from "../../functions/numeroAMes";
+import React from "react"
+import "../../styles/CrearPerfil.css"
+import fechaHoy from "../../functions/fechaHoy"
+import numeroAMes from "../../functions/numeroAMes"
 
 export function CrearPerfil(props) {
 
   function crearPerfil(event) {
-    event.preventDefault();
-    let nombre = event.target[0].value;
-    let imgPerfil = event.target[1].value;
-    let saldo = Number(event.target[2].value);
+    event.preventDefault()
+    let nombre = event.target[0].value
+    let imgPerfil = event.target[1].value
+    let saldo = Number(event.target[2].value)
     try {
-      new URL(imgPerfil);
+      new URL(imgPerfil)
     } catch (error) {
-      return alert("URL de imagen de perfil invalida. Intente de nuevo");
+      return alert("URL de imagen de perfil invalida. Intente de nuevo")
     }
-    let { mes, año } = fechaHoy();
+    let { mes, año } = fechaHoy()
 
     let user = {
       nombre,
@@ -25,9 +25,9 @@ export function CrearPerfil(props) {
       finanzas: {
         [año]: [{ mes: numeroAMes(mes), saldoFinal: 0, gastos: [] }], //se crea el objeto con la key del año en curso y con el mes en curso
       },
-    };
-    props.setInfoUser(user);
-    localStorage.setItem("info", JSON.stringify(user));
+    }
+    props.setInfoUser(user)
+    localStorage.setItem("info", JSON.stringify(user))
   }
 
   return (
@@ -65,5 +65,5 @@ export function CrearPerfil(props) {
         </div>
       </section>
     </>
-  );
+  )
 }
