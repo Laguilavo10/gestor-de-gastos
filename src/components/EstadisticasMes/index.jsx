@@ -12,12 +12,6 @@ export  function EstadisticasMes({dataMes, año}) {
   let totalIngresosMes = ingresosArray.length !=  0 ? ingresosArray.reduce((a , b)=>(a + b.valor), 0) : 0
   let totalGastosMes = gastosArray.length !=  0  ? gastosArray.reduce((a, b)=>(a + b.valor), 0) : 0 
 
-  // let dataMesString = dataMes.gastos.map((a)=>{
-  //   let valorDecimal = Intl.NumberFormat().format(a.valor)
-  //   let valorString = valorDecimal.toString()
-  //   a.valor = valorString
-  //   return (a)
-  // })
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>

@@ -4,18 +4,20 @@ import { ModalNuevoMovimiento } from "../ModalNuevoMovimiento";
 export function Profile(props) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   let saldoInicial = Number(props.infoUser.saldo);
-  let saldoAñosArrays = []
-  let saldoAño = 0 
+  let saldoAñosArrays = [];
 
   for (const key in props.infoUser.finanzas) {
-    saldoAño = props.infoUser.finanzas[key].map((element) =>
-      element.gastos.reduce((a, b) => {
-        return b.transaccion === "ingreso" ? Number(a + b.valor) : Number(a - b.valor);
-      }, saldoInicial)
-    );
-    saldoAñosArrays.push(saldoAño)
+    let totalAño = props.infoUser.finanzas[key]
+      .flatMap((a) => a.gastos)
+      .reduce(
+        (a, b) => (b.transaccion === "ingreso" ? a + b.valor : a - b.valor),
+        0
+      );
+      saldoAñosArrays.push(totalAño);
   }
-  let saldoActual = saldoAñosArrays.reduce((a, b)=>(Number(a) + Number(b)), 0)
+
+  let saldoActual = (saldoAñosArrays.reduce((a, b) => a + b, 0)) + saldoInicial
+
   return (
     <>
       <aside className="panel-profile panel">
