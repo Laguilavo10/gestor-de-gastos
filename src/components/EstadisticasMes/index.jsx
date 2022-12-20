@@ -4,7 +4,7 @@ import Subir from "../../assets/arrow-up.png";
 import jsPDF from "jspdf";
 import { crearPDF } from '../../functions/crearPDF';
 
-export  function EstadisticasMes({dataMes}) {
+export  function EstadisticasMes({dataMes, año}) {
 
   let ingresosArray = dataMes.gastos.filter((a)=>(a.transaccion ==='ingreso'))
   let gastosArray = dataMes.gastos.filter((a)=>(a.transaccion === 'gasto'))
@@ -18,10 +18,6 @@ export  function EstadisticasMes({dataMes}) {
   //   a.valor = valorString
   //   return (a)
   // })
-  
-
-
-
   return (
     <div className="stats-mes">
       <p className="mes">{dataMes.mes}</p>
@@ -50,7 +46,7 @@ export  function EstadisticasMes({dataMes}) {
             <span>Gastos</span>
           </div>
         </div>
-        <button className='btn-descarga' onClick={()=>(crearPDF(dataMes, totalIngresosMes, totalGastosMes))}>Descargar Reporte</button>
+        <button className='btn-descarga' onClick={()=>(crearPDF(dataMes, totalIngresosMes, totalGastosMes, año))}>Descargar Reporte</button>
       </article>
   </div>
   )

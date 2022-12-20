@@ -12,7 +12,7 @@ function createHeaders(keys) {
   }));
 }
 
-export function crearPDF(dataMes, totalIngresosMes, totalGastosMes) {
+export function crearPDF(dataMes, totalIngresosMes, totalGastosMes, año) {
     let dataMesString = dataMes.gastos.map((a)=>{
         let valorDecimal = Intl.NumberFormat().format(a.valor)
         let valorString = valorDecimal.toString()
@@ -24,7 +24,7 @@ export function crearPDF(dataMes, totalIngresosMes, totalGastosMes) {
   totalGastosMes = Intl.NumberFormat().format(totalGastosMes)
 
   let doc = new jsPDF()
-  doc.text(`Mes ${dataMes.mes} - Movimientos`, 10, 20)
+  doc.text(`Mes ${dataMes.mes}/${año} - Movimientos`, 10, 20)
   doc.text(`El total de ingresos fue : $ ${totalIngresosMes} `, 10, 30)
   doc.text(`El total de gastos fue : $ ${totalGastosMes} `, 10, 40)
   doc.table(10, 50, dataMesString, header)
