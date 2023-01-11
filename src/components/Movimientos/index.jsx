@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useReducer } from "react"
 import "../../styles/Movimientos.css"
 import { ItemMovimiento } from "../ItemMovimiento"
 
@@ -6,27 +6,25 @@ export function Movimientos({ infoUser, año, indexMes, setInfoUser }) {
   useEffect(() => {
     let section = document.getElementById("section")
     section.scrollTop = section.scrollHeight
-  }, [])
+  }, []) 
 
-  let movimientosOrdenados = infoUser.finanzas[año][indexMes()].gastos.sort(
-    (a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2]
-  )
+  let finanzasAñoActual = infoUser.finanzas[año].flatMap((a)=>(a.gastos))
 
+  let movimientosOrdenados = finanzasAñoActual.sort((a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2])
+    
   const [movimientosRender, setMovimientosRender] =
     useState(movimientosOrdenados)
 
-  const busquedaMovimientos = (event) => {
-    let busqueda = event.target.value
-    let filtro = infoUser.finanzas[año]
-      .map((mes) => mes)
-      .flatMap((gastosArray) => gastosArray.gastos)
-      .filter(
-        (movimiento) => movimiento.descripcion.includes(busqueda) && movimiento
-      )
-    busqueda ? setMovimientosRender(filtro) : setMovimientosRender(movimientosOrdenados)
-  }
+    const busquedaMovimientos = (event) => {
+      let busqueda = event.target.value
+      let filtro = infoUser.finanzas[año]
+        .flatMap((gastosArray) => gastosArray.gastos)
+        .filter(
+          (movimiento) => movimiento.descripcion.includes(busqueda) && movimiento
+        )
+      busqueda ? setMovimientosRender(filtro) : setMovimientosRender(movimientosOrdenados)
+    }
 
-  // console.log(movimientosRender)
   return (
     <>
       <div className="search-container">

@@ -25,7 +25,7 @@ export default function registrarMovimiento(
 
   let [añoMovimiento, mesMovimiento, diaMovimiento] =
   infoMovimiento.fecha.split("-")
-  let mesHoy = numeroAMes(mesMovimiento)
+  let mesMovimientoString = numeroAMes(mesMovimiento)
 
   let existeAño = infoUser.finanzas[añoMovimiento] //validar si existe el año
 
@@ -34,18 +34,19 @@ export default function registrarMovimiento(
   }
 
   let existeMes = infoUser.finanzas[añoMovimiento].some( //validar si existe el mes
-    (a) => a.mes === mesHoy
+    (a) => a.mes === mesMovimientoString
   )
 
   if (!existeMes) {
     infoUser.finanzas[Number(añoMovimiento)].push({
-      mes: mesHoy,
+      mesNumero:mesMovimiento,
+      mes: mesMovimientoString,
       saldoFinal: 0,
       gastos: [],
     })
   }
 
-  let i = infoUser.finanzas[añoMovimiento].findIndex((a) => a.mes === mesHoy)
+  let i = infoUser.finanzas[añoMovimiento].findIndex((a) => a.mes === mesMovimientoString)
   infoUser.finanzas[añoMovimiento][i].gastos.push(infoMovimiento)
 
   localStorage.setItem("info", JSON.stringify(infoUser))

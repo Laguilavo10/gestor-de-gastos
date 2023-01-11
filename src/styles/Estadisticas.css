@@ -5,7 +5,6 @@
   gap: 20px ;
   height: 100%;
   overflow-y: auto;
-  /* overflow-y: visible; */
   margin: auto;
   justify-content: center;
   align-items: center;
@@ -98,3 +97,4 @@
   padding: 5px;
   border-radius: 5px;
 }
+

@@ -7,6 +7,7 @@ import registrarMovimiento from "../../functions/registroMovimiento"
 export function ModalNuevoMovimiento(props) {
   const [alerta, setAlerta] = useState(false)
   let { dia, mes, año } = fechaHoy()
+
   return (
     <>
       <article className={'container-modal'}>
