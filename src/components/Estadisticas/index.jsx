@@ -8,6 +8,7 @@ export function Estadisticas({ infoUser, añoActual }) {
   if (!infoUser) {
     return <Navigate to='/'></Navigate>
   }
+  
   const [año, setAño] = useState(añoActual)
   let añosDisponibles = Object.keys(infoUser.finanzas)
 

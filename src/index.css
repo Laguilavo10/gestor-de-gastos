@@ -7,9 +7,10 @@
 }
 
 :root {
-  --background: #343a40;
-  --nav-bar: #2d5980;
+  --background: #002855;
+  --nav-bar: #044386;
 }
+
 body {
   background-color: var(--background);
 }

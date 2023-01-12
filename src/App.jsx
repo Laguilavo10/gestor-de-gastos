@@ -5,10 +5,8 @@ import { EstadisticasMes } from "./components/EstadisticasMes";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
 import { ItemMovimiento } from "./components/ItemMovimiento";
-// import { ModalNuevoMovimiento } from "./components/ModalNuevoMovimiento"
 import { Movimientos } from "./components/Movimientos";
 import { NavMobile } from "./components/NavMobile";
-// import { NoHayRegistro } from "./components/NoHayRegistro"
 import { Profile } from "./components/Profile";
 import fechaHoy from "./functions/fechaHoy";
 import numeroAMes from "./functions/numeroAMes";
