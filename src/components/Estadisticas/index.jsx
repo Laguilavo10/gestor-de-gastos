@@ -1,9 +1,13 @@
 import { useState } from "react"
+import { Navigate } from "react-router-dom"
 import "../../styles/Estadisticas.css"
 import { EstadisticasMes } from "../EstadisticasMes"
 
 export function Estadisticas({ infoUser, añoActual }) {
-
+  // debugger
+  if (!infoUser) {
+    return <Navigate to='/'></Navigate>
+  }
   const [año, setAño] = useState(añoActual)
   let añosDisponibles = Object.keys(infoUser.finanzas)
 

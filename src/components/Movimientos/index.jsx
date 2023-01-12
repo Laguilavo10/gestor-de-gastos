@@ -1,8 +1,15 @@
 import { useEffect, useState, useReducer } from "react"
+import { Navigate } from "react-router-dom"
 import "../../styles/Movimientos.css"
 import { ItemMovimiento } from "../ItemMovimiento"
 
 export function Movimientos({ infoUser, año, indexMes, setInfoUser }) {
+
+  
+  if (!infoUser) {
+    return <Navigate to='/'></Navigate>
+  }
+
   useEffect(() => {
     let section = document.getElementById("section")
     section.scrollTop = section.scrollHeight
