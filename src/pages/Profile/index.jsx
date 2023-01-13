@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ModalNuevoMovimiento } from "../ModalNuevoMovimiento"
+import { ModalNuevoMovimiento } from "../../components/ModalNuevoMovimiento"
 
 export function Profile(props) {
   const [isOpenModal, setIsOpenModal] = useState(false)

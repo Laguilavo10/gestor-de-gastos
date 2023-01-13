@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import "../../styles/Estadisticas.css"
-import { EstadisticasMes } from "../EstadisticasMes"
+import { EstadisticasMes } from "../../components/EstadisticasMes"
 
 export function Estadisticas({ infoUser, añoActual }) {
   // debugger

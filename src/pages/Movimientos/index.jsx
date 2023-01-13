@@ -1,7 +1,7 @@
 import { useEffect, useState, useReducer } from "react"
 import { Navigate } from "react-router-dom"
 import "../../styles/Movimientos.css"
-import { ItemMovimiento } from "../ItemMovimiento"
+import { ItemMovimiento } from "../../components/ItemMovimiento"
 
 export function Movimientos({ infoUser, año, indexMes, setInfoUser }) {
 
