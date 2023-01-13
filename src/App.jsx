@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
-import { CrearPerfil } from "./components/CrearPerfil";
-import { Estadisticas } from "./components/Estadisticas";
-import { EstadisticasMes } from "./components/EstadisticasMes";
+import { useState } from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+
+// rutas accesibles
+import { CrearPerfil } from "./pages/CrearPerfil";
+import { Profile } from "./pages/Profile";
+import { Estadisticas } from "./pages/Estadisticas";
+import { Movimientos } from "./pages/Movimientos";
+
+// componentes
 import { Header } from "./components/Header";
-import { ItemMovimiento } from "./components/ItemMovimiento";
-import { Movimientos } from "./components/Movimientos";
 import { NavMobile } from "./components/NavMobile";
-import { Profile } from "./components/Profile";
+
+//funciones
 import fechaHoy from "./functions/fechaHoy";
 import numeroAMes from "./functions/numeroAMes";
+
+//estilos
 import "./index.css";
 
 function App() {
