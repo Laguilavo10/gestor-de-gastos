@@ -1,4 +1,4 @@
-import React from "react"
+import { useEffect} from "react"
 import arrowDown from '../../assets/arrow-down.png'
 import arrowUp from '../../assets/arrow-up.png'
 import numeroAMes from "../../functions/numeroAMes"
@@ -9,15 +9,17 @@ export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
   let transaccion = infoGasto.transaccion === 'ingreso' ? ['ingreso-item', 'reverse-item', arrowUp] : ['gasto-item', '', arrowDown]
   let mes = numeroAMes(fecha[1])
   let mesAbreviado = numeroAMes(fecha[1]).split('', 3).join('')
-
+  
   const eliminarItem = ()=>{
     let nose = infoUser.finanzas[fecha[0]].findIndex((a)=>(a.mes === mes))
     let i = infoUser.finanzas[fecha[0]][nose].gastos.findIndex((a)=>(a == infoGasto))
     infoUser.finanzas[fecha[0]][nose].gastos.splice(i, 1)
     localStorage.setItem("info", JSON.stringify(infoUser))
-    let copiaInfoUser = JSON.parse(JSON.stringify(infoUser))
+    let copiaInfoUser = JSON.parse(localStorage.getItem(('info')))  
+    console.log(copiaInfoUser) 
     setInfoUser(copiaInfoUser)
   }
+  
 
   return (
     <>

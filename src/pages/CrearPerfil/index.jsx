@@ -10,11 +10,11 @@ export function CrearPerfil(props) {
     let nombre = event.target[0].value
     let imgPerfil = event.target[1].value
     let saldo = Number(event.target[2].value)
-    try {
-      new URL(imgPerfil)
-    } catch (error) {
-      return alert("URL de imagen de perfil invalida. Intente de nuevo")
-    }
+    // try {
+    //   new URL(imgPerfil)
+    // } catch (error) {
+    //   return alert("URL de imagen de perfil invalida. Intente de nuevo")
+    // }
     let { mes, año } = fechaHoy()
 
     let user = {

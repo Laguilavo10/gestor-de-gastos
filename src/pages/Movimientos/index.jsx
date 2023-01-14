@@ -3,9 +3,8 @@ import { Navigate } from "react-router-dom"
 import "../../styles/Movimientos.css"
 import { ItemMovimiento } from "../../components/ItemMovimiento"
 
-export function Movimientos({ infoUser, año, indexMes, setInfoUser }) {
+export function Movimientos({ infoUser, año, setInfoUser }) {
 
-  
   if (!infoUser) {
     return <Navigate to='/'></Navigate>
   }
@@ -68,4 +67,6 @@ export function Movimientos({ infoUser, año, indexMes, setInfoUser }) {
   )
 }
 
-// {"nombre":"felipe","imgPerfil":"https://i.pinimg.com/236x/ce/59/83/ce59837dd46efcaa5549a75bf2b1e443.jpg","saldo":10000,"ultimoSaldo":10000,"finanzas":{"2022":[{"mes":"Diciembre","saldoFinal":0,"gastos":[{"fecha":"2022-12-08","valor":3123,"transaccion":"ingreso","descripcion":"dsad","metodo":"Tarjeta"},{"fecha":"2022-12-20","valor":2222,"transaccion":"ingreso","descripcion":"prueba","metodo":"Daviplata"},{"fecha":"2022-12-20","valor":13213,"transaccion":"ingreso","descripcion":"uwu","metodo":"Tarjeta"}]},{"mes":"Noviembre","saldoFinal":0,"gastos":[{"fecha":"2022-11-09","valor":23123,"transaccion":"gasto","descripcion":"dsa","metodo":"Nequi"}]}],"2023":[{"mes":"Enero","saldoFinal":0,"gastos":[{"fecha":"2023-01-10","valor":2312,"transaccion":"ingreso","descripcion":"dsad","metodo":"Tarjeta"}]}]}}
+
+
+
