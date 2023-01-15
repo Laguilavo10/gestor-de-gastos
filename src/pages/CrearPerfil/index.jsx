@@ -8,8 +8,8 @@ export function CrearPerfil(props) {
   function crearPerfil(event) {
     event.preventDefault()
     let nombre = event.target[0].value
-    let imgPerfil = event.target[1].value
-    let saldo = Number(event.target[2].value)
+    // let imgPerfil = event.target[1].value
+    let saldo = Number(event.target[1].value)
     // try {
     //   new URL(imgPerfil)
     // } catch (error) {
@@ -19,7 +19,7 @@ export function CrearPerfil(props) {
 
     let user = {
       nombre,
-      imgPerfil,
+      imgPerfil : 'https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg',
       saldo,
       ultimoSaldo: saldo,
       finanzas: {
@@ -46,10 +46,10 @@ export function CrearPerfil(props) {
               Nombre usuario
               <input type="text" placeholder="Tu Usuario Aqui" required />
             </label>
-            <label>
+            {/* <label>
               Url Imagen Perfil
               <input type="text" placeholder="https://example.com" required />
-            </label>
+            </label> */}
             <label>
               Saldo Inicial
               <input

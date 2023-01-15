@@ -16,7 +16,6 @@ export function ItemMovimiento({infoGasto, infoUser, setInfoUser}) {
     infoUser.finanzas[fecha[0]][nose].gastos.splice(i, 1)
     localStorage.setItem("info", JSON.stringify(infoUser))
     let copiaInfoUser = JSON.parse(localStorage.getItem(('info')))  
-    console.log(copiaInfoUser) 
     setInfoUser(copiaInfoUser)
   }
   

@@ -2,9 +2,10 @@ import { useEffect, useState, useReducer } from "react"
 import { Navigate } from "react-router-dom"
 import "../../styles/Movimientos.css"
 import { ItemMovimiento } from "../../components/ItemMovimiento"
+import { useMovimientos } from "../../hooks/useMovimientos";
 
 export function Movimientos({ infoUser, año, setInfoUser }) {
-
+  // debugger
   if (!infoUser) {
     return <Navigate to='/'></Navigate>
   }
@@ -14,13 +15,15 @@ export function Movimientos({ infoUser, año, setInfoUser }) {
     section.scrollTop = section.scrollHeight
   }, []) 
 
-  let finanzasAñoActual = infoUser.finanzas[año].flatMap((a)=>(a.gastos))
+    // useEffect(() => {
+    //   let finanzasAñoActual = infoUser.finanzas[año].flatMap((a)=>(a.gastos));
+    //   let movimientosOrdenados = finanzasAñoActual.sort((a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2])
+    //   setMovimientosRender(movimientosOrdenados);
+    // }, [infoUser.finanzas])
 
-  let movimientosOrdenados = finanzasAñoActual.sort((a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2])
+    let movimientosRender = useMovimientos(infoUser, año)
+    // const [movimientosRender, setMovimientosRender] = useState('');
     
-  const [movimientosRender, setMovimientosRender] =
-    useState(movimientosOrdenados)
-
     const busquedaMovimientos = (event) => {
       let busqueda = event.target.value
       let filtro = infoUser.finanzas[año]
