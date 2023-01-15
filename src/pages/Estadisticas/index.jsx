@@ -4,10 +4,12 @@ import "../../styles/Estadisticas.css"
 import { EstadisticasMes } from "../../components/EstadisticasMes"
 
 export function Estadisticas({ infoUser, añoActual }) {
-  // debugger
+
   if (!infoUser) {
     return <Navigate to='/'></Navigate>
   }
+
+  // debugger
   
   const [año, setAño] = useState(añoActual)
   let añosDisponibles = Object.keys(infoUser.finanzas)
@@ -18,7 +20,7 @@ export function Estadisticas({ infoUser, añoActual }) {
 
   return (
     <section className="stats-container">
-      <select onChange={añoSeleccionado} className='options-año'>
+      <select onChange={añoSeleccionado} className='options-año' value={año}>
         {añosDisponibles.map((año) => (
           <option key={año} value={año}>
             {año}
