@@ -5,7 +5,7 @@ import { ItemMovimiento } from "../../components/ItemMovimiento"
 import { useMovimientos } from "../../hooks/useMovimientos";
 
 export function Movimientos({ infoUser, año, setInfoUser }) {
-  // debugger
+
   if (!infoUser) {
     return <Navigate to='/'></Navigate>
   }
@@ -13,16 +13,9 @@ export function Movimientos({ infoUser, año, setInfoUser }) {
   useEffect(() => {
     let section = document.getElementById("section")
     section.scrollTop = section.scrollHeight
-  }, []) 
-
-    // useEffect(() => {
-    //   let finanzasAñoActual = infoUser.finanzas[año].flatMap((a)=>(a.gastos));
-    //   let movimientosOrdenados = finanzasAñoActual.sort((a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2])
-    //   setMovimientosRender(movimientosOrdenados);
-    // }, [infoUser.finanzas])
+  }) 
 
     let movimientosRender = useMovimientos(infoUser, año)
-    // const [movimientosRender, setMovimientosRender] = useState('');
     
     const busquedaMovimientos = (event) => {
       let busqueda = event.target.value
