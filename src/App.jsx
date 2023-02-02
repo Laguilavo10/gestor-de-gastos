@@ -1,44 +1,33 @@
-import { useState } from "react";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-
+import { HashRouter, Route, Routes } from "react-router-dom"
 // rutas accesibles
-import { CrearPerfil } from "./pages/CrearPerfil";
-import { Profile } from "./pages/Profile";
-import { Estadisticas } from "./pages/Estadisticas";
-import { Movimientos } from "./pages/Movimientos";
-
+import { Login } from "./pages/Login"
+import { Profile } from "./pages/Profile"
+import { Estadisticas } from "./pages/Estadisticas"
+import { Movimientos } from "./pages/Movimientos"
 // componentes
-import { Header } from "./components/Header";
-import { NavMobile } from "./components/NavMobile";
-
+import { Header } from "./components/Header"
+import { Nav } from "./components/Nav"
 //funciones
-import fechaHoy from "./functions/fechaHoy";
-import numeroAMes from "./functions/numeroAMes";
-
+import fechaHoy from "./functions/fechaHoy"
+import numeroAMes from "./functions/numeroAMes"
 //estilos
-import "./index.css";
+import "./index.css"
+//hooks
+import { useLocalStorage } from "./hooks/useLocalStorage"
 
 function App() {
-  // debugger
-  let userLocalStorage = JSON.parse(localStorage.getItem("info"));
+  const { data: infoUser, setData: setInfoUser } = useLocalStorage("info")
 
-  if (userLocalStorage == null) {
-    localStorage.setItem("info", JSON.stringify(null));
-  }
-  const [infoUser, setInfoUser] = useState(
-    JSON.parse(localStorage.getItem("info"))
-  );
-
-  let { mes, año } = fechaHoy();
+  let { mes, año } = fechaHoy()
 
   const indexMes = () => {
     if (infoUser != null) {
       let indexMes = infoUser.finanzas[año].findIndex(
         (a) => a.mes === numeroAMes(mes)
-      );
-      return indexMes;
+      )
+      return indexMes
     }
-  };
+  }
 
   return (
     <>
@@ -46,10 +35,7 @@ function App() {
         <Header />
         <Routes>
           {!infoUser ? (
-            <Route
-              path=""
-              element={<CrearPerfil setInfoUser={setInfoUser} />}
-            />
+            <Route path="" element={<Login setInfoUser={setInfoUser} />} />
           ) : (
             <Route
               path="/"
@@ -74,11 +60,12 @@ function App() {
               />
             }
           />
+          <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
-        <NavMobile infoUser={infoUser} />
+        <Nav infoUser={infoUser} />
       </HashRouter>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

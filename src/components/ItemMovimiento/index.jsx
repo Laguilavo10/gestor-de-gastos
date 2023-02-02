@@ -1,4 +1,3 @@
-import { useEffect} from "react"
 import arrowDown from '../../assets/arrow-down.png'
 import arrowUp from '../../assets/arrow-up.png'
 import numeroAMes from "../../functions/numeroAMes"

@@ -1,31 +1,30 @@
-import { useEffect, useState, useReducer } from "react"
-import { Navigate } from "react-router-dom"
 import "../../styles/Movimientos.css"
+import { useEffect } from "react"
+import { Navigate } from "react-router-dom"
 import { ItemMovimiento } from "../../components/ItemMovimiento"
-import { useMovimientos } from "../../hooks/useMovimientos";
+import { useMovimientos } from "../../hooks/useMovimientos"
 
 export function Movimientos({ infoUser, año, setInfoUser }) {
-
   if (!infoUser) {
-    return <Navigate to='/'></Navigate>
+    return <Navigate to="/"></Navigate>
   }
 
   useEffect(() => {
     let section = document.getElementById("section")
     section.scrollTop = section.scrollHeight
-  }) 
+  })
 
-    let movimientosRender = useMovimientos(infoUser, año)
-    
-    const busquedaMovimientos = (event) => {
-      let busqueda = event.target.value
-      let filtro = infoUser.finanzas[año]
-        .flatMap((gastosArray) => gastosArray.gastos)
-        .filter(
-          (movimiento) => movimiento.descripcion.includes(busqueda) && movimiento
-        )
-      busqueda ? setMovimientosRender(filtro) : setMovimientosRender(movimientosOrdenados)
-    }
+  let movimientosRender = useMovimientos(infoUser, año)
+
+  const busquedaMovimientos = (event) => {
+    // let busqueda = event.target.value
+    // let filtro = infoUser.finanzas[año]
+    //   .flatMap((gastosArray) => gastosArray.gastos)
+    //   .filter(
+    //     (movimiento) => movimiento.descripcion.includes(busqueda) && movimiento
+    //   )
+    // busqueda ? setMovimientosRender(filtro) : setMovimientosRender(movimientosOrdenados)
+  }
 
   return (
     <>
@@ -62,7 +61,3 @@ export function Movimientos({ infoUser, año, setInfoUser }) {
     </>
   )
 }
-
-
-
-

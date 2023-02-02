@@ -3,7 +3,7 @@ import "../../styles/CrearPerfil.css"
 import fechaHoy from "../../functions/fechaHoy"
 import numeroAMes from "../../functions/numeroAMes"
 
-export function CrearPerfil(props) {
+export function Login(props) {
 
   function crearPerfil(event) {
     event.preventDefault()

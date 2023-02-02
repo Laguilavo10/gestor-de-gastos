@@ -5,8 +5,11 @@ export function useMovimientos(infoUser, año) {
 
   useEffect(() => {
     const finanzasAñoActual = infoUser.finanzas[año].flatMap((a)=>(a.gastos));
-    const movimientosOrdenados = finanzasAñoActual.sort((a, b) => a.fecha.split("-")[2] - b.fecha.split("-")[2])
-    setMovimientosRender(movimientosOrdenados);
+    
+    const movimientosOrdenados = finanzasAñoActual.sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime()) 
+    
+    setMovimientosRender(movimientosOrdenados)
+
   }, [infoUser.finanzas[año]]);
 
   return movimientosRender;
